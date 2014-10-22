@@ -1,0 +1,23 @@
+require 'spec_helper'
+
+describe service("zebra") do
+  it { should be_running }
+end
+
+describe service("bgpd") do
+  it { should be_running }
+end
+
+describe service("ospfd") do
+  it { should be_running }
+end
+
+describe service("watchquagga") do
+  it { should be_running }
+end
+
+for cfgfile in ["Quagga.conf","bgpd.conf","daemons","debian.conf","ospf6d.conf","ospfd.conf","vtysh.conf","zebra.conf"] do
+  describe file("/etc/quagga/#{cfgfile}") do
+    it { should be_file }
+  end
+end
