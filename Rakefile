@@ -7,6 +7,13 @@ task :core2s do
   task('spec:run').invoke(targets, set)
 end
 
+task :ospfunnum2s do
+  targets = ['leaf1', 'leaf2']
+  # set = ['core', '2s', 'ospfunnum']
+  set = ['core', 'ospfunnum']
+  task('spec:run').invoke(targets, set)
+end
+
 task :ospfunnum2s2l do
   targets = ['leaf1', 'leaf2']
   set = ['core', '2s2l', 'ospfunnum']
