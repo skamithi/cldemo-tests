@@ -1,34 +1,36 @@
 require 'rake'
 require 'rspec/core/rake_task'
 
-task :spec    => 'spec:all'
-task :default => :spec
+task :ospfunnum2s2l do
+  targets = ['leaf1', 'leaf2']
+  set = ['core', 'ospfunnum']
+  task('spec:run').invoke(targets, set)
+end
 
 namespace :spec do
-  targets = []
+  tests = []
   Dir.glob('./spec/*').each do |dir|
     next unless File.directory?(dir)
-    targets << File.basename(dir)
+    tests << File.basename(dir)
   end
 
-  targets.each do |target|
-    desc "Run serverspec tests to #{target}"
-    RSpec::Core::RakeTask.new(target.to_sym) do |t|
-      ENV['TARGET_HOST'] = target
-      t.pattern = "spec/#{target}/*_spec.rb"
+  # Define Rake tasks to run RSpec for each set of tests
+  tests.each do |test|
+    desc "Run serverspec tests #{test}"
+    RSpec::Core::RakeTask.new(test.to_sym) do |t|
+      t.pattern = "spec/#{test}/*_spec.rb"
     end
   end
 
-  task :default => :all
-  task :all do
+  task :run, [:targets,:set] do |_, args|
+    targets = args[:targets]
+    set = args[:set]
     targets.each do |target|
       begin
-        RSpec::Core::RakeTask.new(target.to_sym) do |t|
+        set.each do |test|
           ENV['TARGET_HOST'] = target
-          t.pattern = "spec/#{target}/*_spec.rb"
+          Rake::Task["spec:#{test}"].invoke
         end
-
-        Rake::Task[target].invoke
       rescue Exception => e
         puts "Serverspec tests for #{target} failed: #{e.class} #{e.message}"
       end
