@@ -1,9 +1,15 @@
 require 'rake'
 require 'rspec/core/rake_task'
 
+task :core2s do
+  targets = ['leaf1', 'leaf2']
+  set = ['core']
+  task('spec:run').invoke(targets, set)
+end
+
 task :ospfunnum2s2l do
   targets = ['leaf1', 'leaf2']
-  set = ['core', 'ospfunnum']
+  set = ['core', '2s2l', 'ospfunnum']
   task('spec:run').invoke(targets, set)
 end
 
