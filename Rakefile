@@ -15,13 +15,14 @@ task :ospfunnum2s do
 end
 
 task :core2s2l do
-  targets = ['leaf1', 'leaf2']
+  targets = ['spine1', 'spine2', 'leaf1', 'leaf2']
   set = ['core']
   task('spec:run').invoke(targets, set)
 end
 
 task :ospfunnum2s2l do
-  targets = ['leaf1', 'leaf2']
+  targets = ['spine1', 'spine2', 'leaf1', 'leaf2']
+  # targets = ['leaf1', 'leaf2']
   set = ['core', '2s2l', 'ospfunnum']
   ENV['TOPOLOGY'] = '2S2L'
   task('spec:run').invoke(targets, set)
@@ -46,10 +47,11 @@ namespace :spec do
     targets = args[:targets]
     set = args[:set]
     targets.each do |target|
+      puts "Running tests for target #{target}"
       begin
         set.each do |test|
           ENV['TARGET_HOST'] = target
-          Rake::Task["spec:#{test}"].invoke
+          Rake::Task["spec:#{test}"].execute
         end
       rescue Exception => e
         puts "Serverspec tests for #{target} failed: #{e.class} #{e.message}"
