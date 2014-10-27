@@ -14,10 +14,16 @@ task :ospfunnum2s do
   task('spec:run').invoke(targets, set)
 end
 
-task :ospfunnum2l2s do
+task :core2s2l do
   targets = ['leaf1', 'leaf2']
-  set = ['core', '2l2s', 'ospfunnum']
-  ENV['TOPOLOGY'] = '2L2S'
+  set = ['core']
+  task('spec:run').invoke(targets, set)
+end
+
+task :ospfunnum2s2l do
+  targets = ['leaf1', 'leaf2']
+  set = ['core', '2s2l', 'ospfunnum']
+  ENV['TOPOLOGY'] = '2S2L'
   task('spec:run').invoke(targets, set)
 end
 

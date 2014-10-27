@@ -10,7 +10,7 @@ case ENV['TOPOLOGY']
   when '2S'
     interfaces = ["swp1","swp2","swp3","swp4"] 
     neighbors = ["10.2.1.2"]
-  when '2S2L'
+  when '2L2S'
     interfaces = ["swp1","swp2","swp3","swp4","swp17","swp18","swp19","swp20"] 
     neighbors = ["10.2.1.3","10.2.1.4"]
 end
