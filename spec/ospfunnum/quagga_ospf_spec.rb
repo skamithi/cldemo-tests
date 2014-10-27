@@ -1,34 +1,19 @@
 require 'spec_helper'
+require 'json'
 
-# my interfaces
-case target
-  when 'leaf1'
-    intfaddr = '10.2.1.1'
-  when 'leaf2'
-    intfaddr = '10.2.1.2'
-  when 'spine1'
-    intfaddr = '10.2.1.3'
-  when 'spine2'
-    intfaddr = '10.2.1.4'
-end
+node_data = JSON.parse(File.read(File.expand_path('../data/nodes.json',__FILE__)))
+
+# Select the data that's specific to this node
+target_data = node_data[target]
 
 describe command("cl-ospf interface show lo") do
   its(:stdout) { should match /ifindex 1, MTU / }
-  its(:stdout) { should match /Internet Address #{intfaddr}\/32/ }
+  its(:stdout) { should match /Internet Address #{target_data['local_addr']}\/32/ }
 end
 
-case topology
-  when '2s'
-    interfaces = ["swp1","swp2","swp3","swp4"] 
-    neighbors = ["10.2.1.2"]
-  when '2s2l'
-    interfaces = ["swp1","swp2","swp3","swp4","swp17","swp18","swp19","swp20"] 
-    if spine?
-      neighbors = ['10.2.1.1','10.2.1.2']
-    else
-      neighbors = ['10.2.1.3','10.2.1.4']
-    end
-end
+# Select the data that's specific to this node for the given topology
+interfaces = target_data[topology]['interfaces']
+neighbors = target_data[topology]['neighbors']
 
 # interfaces are unnumbered and have a neighbor
 for interface in interfaces do

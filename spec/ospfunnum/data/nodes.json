@@ -1,0 +1,38 @@
+{
+  "leaf1": {
+    "local_addr": "10.2.1.1",
+    "2s": {
+      "interfaces": ["swp1","swp2","swp3","swp4"],
+      "neighbors": ["10.2.1.2"]
+    },
+    "2s2l": {
+      "interfaces": ["swp1","swp2","swp3","swp4","swp17","swp18","swp19","swp20"],
+      "neighbors": ["10.2.1.3","10.2.1.4"]
+    }
+  },
+  "leaf2": {
+    "local_addr": "10.2.1.2",
+    "2s": {
+      "interfaces": ["swp1","swp2","swp3","swp4"],
+      "neighbors": ["10.2.1.2"]
+    },
+    "2s2l": {
+      "interfaces": ["swp1","swp2","swp3","swp4","swp17","swp18","swp19","swp20"],
+      "neighbors": ["10.2.1.3","10.2.1.4"]
+    }
+  },
+  "spine1": {
+    "local_addr": "10.2.1.3",
+    "2s2l": {
+      "interfaces": ["swp1","swp2","swp3","swp4","swp17","swp18","swp19","swp20"],
+      "neighbors": ["10.2.1.1","10.2.1.2"]
+    }
+  },
+  "spine2": {
+    "local_addr": "10.2.1.4",
+    "2s2l": {
+      "interfaces": ["swp1","swp2","swp3","swp4","swp17","swp18","swp19","swp20"],
+      "neighbors": ["10.2.1.1","10.2.1.2"]
+    }
+  }
+}
