@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-case ENV['TARGET_HOST']
+case target
   when 'leaf1'
     describe interface('br0') do
       it { should have_ipv4_address('10.4.1.1/25') }
