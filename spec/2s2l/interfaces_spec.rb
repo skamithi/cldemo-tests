@@ -1,37 +1,24 @@
 require 'spec_helper'
+require 'json'
 
-case target
-  when 'leaf1'
-    describe interface('br0') do
-      it { should have_ipv4_address('10.4.1.1/25') }
-    end
+node_data = JSON.parse(File.read(File.expand_path('../data/nodes.json',__FILE__)))
 
-    describe interface('br1') do
-      it { should have_ipv4_address('10.4.1.129/25') }
-    end
-
-    ipv4addr = '10.2.1.1/32'
-  when 'leaf2'
-    describe interface('br0') do
-      it { should have_ipv4_address('10.4.2.1/25') }
-    end
-
-    describe interface('br1') do
-      it { should have_ipv4_address('10.4.2.129/25') }
-    end
-
-    ipv4addr = '10.2.1.2/32'
-  when 'spine1'
-    ipv4addr = '10.2.1.3/32'
-  when 'spine2'
-    ipv4addr = '10.2.1.4/32'
-end
+# Select the data that's specific to this node
+target_data = node_data[target]
 
 # ospf unnumbered has same IP on a bunch of devices
 for intname in ['lo','swp1','swp2','swp3','swp4','swp17','swp18','swp19','swp20']
   describe interface(intname) do
-    it { should have_ipv4_address(ipv4addr) }
+    it { should have_ipv4_address("#{target_data['local_addr']}/32") }
   end
 end
 
+if leaf?
+  describe interface('br0') do
+    it { should have_ipv4_address("#{target_data['br0_addr']}/25") }
+  end
 
+  describe interface('br1') do
+    it { should have_ipv4_address("#{target_data['br1_addr']}/25") }
+  end
+end
