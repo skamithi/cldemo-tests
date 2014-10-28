@@ -2,30 +2,25 @@ require 'rake'
 require 'rspec/core/rake_task'
 
 task :core2s do
-  targets = ['leaf1', 'leaf2']
-  set = ['core']
-  task('spec:run').invoke(targets, set)
+  Rake::Task['spec:run'].execute({targets: ['leaf1', 'leaf2'],
+                                      set: ['core']})
 end
 
-task :ospfunnum2s do
-  targets = ['leaf1', 'leaf2']
-  set = ['core', '2s', 'ospfunnum']
-  ENV['TOPOLOGY'] = '2S'
-  task('spec:run').invoke(targets, set)
+task :ospfunnum2s => :core2s do
+  ENV['TOPOLOGY'] = '2s'
+  Rake::Task['spec:run'].execute({targets: ['leaf1', 'leaf2'],
+                                      set: ['2s', 'ospfunnum']})
 end
 
 task :core2s2l do
-  targets = ['spine1', 'spine2', 'leaf1', 'leaf2']
-  set = ['core']
-  task('spec:run').invoke(targets, set)
+  Rake::Task['spec:run'].execute({targets: ['leaf1', 'leaf2', 'spine1', 'spine2'],
+                                      set: ['core']})
 end
 
-task :ospfunnum2s2l do
-  targets = ['spine1', 'spine2', 'leaf1', 'leaf2']
-  # targets = ['leaf1', 'leaf2']
-  set = ['core', '2s2l', 'ospfunnum']
-  ENV['TOPOLOGY'] = '2S2L'
-  task('spec:run').invoke(targets, set)
+task :ospfunnum2s2l => :core2s2l do
+  ENV['TOPOLOGY'] = '2s2l'
+  Rake::Task['spec:run'].execute({targets: ['leaf1', 'leaf2', 'spine1', 'spine2'],
+                                      set: ['2s2l', 'ospfunnum']})
 end
 
 namespace :spec do
@@ -43,7 +38,7 @@ namespace :spec do
     end
   end
 
-  task :run, [:targets,:set] do |_, args|
+  task :run, [:targets, :set] do |_, args|
     targets = args[:targets]
     set = args[:set]
     targets.each do |target|
