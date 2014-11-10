@@ -1,5 +1,6 @@
 require 'rake'
 require 'rspec/core/rake_task'
+require 'colorize'
 
 tasks = [{name: 'core2s', topology: '2s', set: ['core'], targets: ['leaf1', 'leaf2']},
          {name: 'ospfunnum2s', topology: '2s', set: ['core', '2s', 'ospfunnum'], targets: ['leaf1', 'leaf2']}
@@ -17,22 +18,25 @@ tasks.each do |t|
     failures = 0
 
     t[:targets].each do |target|
-      puts "Running tests for target #{target}"
       begin
         ENV['TARGET_HOST'] = target
         Rake::Task['spec:run'].execute(name: t[:name], target: target, set: t[:set])
       rescue Exception => e
-        puts "Serverspec tests for #{target} failed: #{e.class} #{e.message}"
+        puts "Serverspec tests for #{target} failed: #{e.class} #{e.message}".colorize(:red)
         failures += 1
       end
     end
-    puts "#{failures} of #{t[:targets].length} hosts failed"
+    if failures > 0
+      puts "#{failures} of #{t[:targets].length} hosts failed".colorize(:red)
+    else
+      puts "All tests passed succesfully".colorize(:green)
+    end
   end
 end
 
 namespace :spec do
   task :run, [:name, :target, :set] do |_, args|
-    puts "Running tests #{args[:name]} on #{args[:target]}"
+    puts "Running tests #{args[:name]} on #{args[:target]}".colorize(:blue)
 
     # Define and invoke a new RSpec task for all of the test sets this test
     # requires
