@@ -1,56 +1,56 @@
+require 'json'
+require 'colorize'
 require 'rake'
 require 'rspec/core/rake_task'
 
-task :core2s do
-  Rake::Task['spec:run'].execute({targets: ['leaf1', 'leaf2'],
-                                      set: ['core']})
-end
+# Load the test configuration data
+config = JSON.parse(File.read('tests.json'))
+puts config.to_s.colorize(:magenta) if ENV['DEBUG']
 
-task :ospfunnum2s => :core2s do
-  ENV['TOPOLOGY'] = '2s'
-  Rake::Task['spec:run'].execute({targets: ['leaf1', 'leaf2'],
-                                      set: ['2s', 'ospfunnum']})
-end
+# Set the sudo password from the config unless the user has over-riddent it
+ENV['SUDO_PASSWORD'] = config['sudo_password'] unless ENV.has_key?('SUDO_PASSWORD')
 
-task :core2s2l do
-  Rake::Task['spec:run'].execute({targets: ['leaf1', 'leaf2', 'spine1', 'spine2'],
-                                      set: ['core']})
-end
+# Gather the Rake tasks to define from the config
+tasks = config['tasks']
 
-task :ospfunnum2s2l => :core2s2l do
-  ENV['TOPOLOGY'] = '2s2l'
-  Rake::Task['spec:run'].execute({targets: ['leaf1', 'leaf2', 'spine1', 'spine2'],
-                                      set: ['2s2l', 'ospfunnum']})
+# Define a top-level Rake task for each task defined, and set the correct
+# environment variables and test set to be run
+tasks.each do |t|
+  desc "Run serverspec tests #{t['name']}"
+  task t['name'].to_sym do
+    ENV['TOPOLOGY'] = t['topology']
+
+    # Each set of tests is run once per. host, so keep track of how many hosts
+    # failed
+    failures = 0
+
+    t['targets'].each do |target|
+      begin
+        ENV['TARGET_HOST'] = target
+        Rake::Task['spec:run'].execute(name: t['name'], target: target, set: t['set'])
+      rescue Exception => e
+        puts "Serverspec tests for #{target} failed: #{e.class} #{e.message}".colorize(:red)
+        failures += 1
+      end
+    end
+    if failures > 0
+      puts "#{failures} of #{t['targets'].length} hosts failed".colorize(:red)
+    else
+      puts "All tests passed succesfully".colorize(:green)
+    end
+  end
 end
 
 namespace :spec do
-  tests = []
-  Dir.glob('./spec/*').each do |dir|
-    next unless File.directory?(dir)
-    tests << File.basename(dir)
-  end
+  task :run, [:name, :target, :set] do |_, args|
+    puts "Running tests #{args[:name]} on #{args[:target]}".colorize(:blue)
 
-  # Define Rake tasks to run RSpec for each set of tests
-  tests.each do |test|
-    desc "Run serverspec tests #{test}"
-    RSpec::Core::RakeTask.new(test.to_sym) do |t|
-      t.pattern = "spec/#{test}/*_spec.rb"
+    # Define and invoke a new RSpec task for all of the test sets this test
+    # requires
+    taskname = "#{args[:name]}#{args[:target]}"
+    RSpec::Core::RakeTask.new("spec:#{taskname}".to_sym) do |t|
+      t.pattern = FileList[args[:set].map{|el| "spec/#{el}/*_spec.rb"}]
     end
-  end
-
-  task :run, [:targets, :set] do |_, args|
-    targets = args[:targets]
-    set = args[:set]
-    targets.each do |target|
-      puts "Running tests for target #{target}"
-      begin
-        set.each do |test|
-          ENV['TARGET_HOST'] = target
-          Rake::Task["spec:#{test}"].execute
-        end
-      rescue Exception => e
-        puts "Serverspec tests for #{target} failed: #{e.class} #{e.message}"
-      end
-    end
+    Rake::Task["spec:#{taskname}"].execute
   end
 end

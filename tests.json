@@ -1,0 +1,17 @@
+{
+  "sudo_password": "CumulusLinux!",
+  "tasks": [
+    {
+      "name": "core2s",
+      "topology": "2s",
+      "set": ["core"],
+      "targets": ["leaf1", "leaf2"]
+    },
+    {
+      "name": "ospfunnum2s",
+      "topology": "2s",
+      "set": ["core", "2s", "ospfunnum"],
+      "targets": ["leaf1", "leaf2"]
+    }
+  ]
+}
