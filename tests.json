@@ -1,17 +1,22 @@
 {
   "sudo_password": "CumulusLinux!",
+  "topologies": ["2s", "2s2l"],
   "tasks": [
     {
-      "name": "core2s",
-      "topology": "2s",
+      "name": "core",
       "set": ["core"],
-      "targets": ["leaf1", "leaf2"]
+      "targets": {
+        "2s": ["leaf1", "leaf2"],
+        "2s2l": ["leaf1", "leaf2", "spine1", "spine2"]
+      }
     },
     {
-      "name": "ospfunnum2s",
-      "topology": "2s",
-      "set": ["core", "2s", "ospfunnum"],
-      "targets": ["leaf1", "leaf2"]
+      "name": "ospfunnum",
+      "set": ["core", "ospfunnum"],
+      "targets": {
+        "2s": ["leaf1", "leaf2"],
+        "2s2l": ["leaf1", "leaf2", "spine1", "spine2"]
+      }
     }
   ]
 }

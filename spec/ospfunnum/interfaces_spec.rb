@@ -1,13 +1,13 @@
 require 'spec_helper'
 require 'json'
 
-node_data = JSON.parse(File.read(File.expand_path('../data/nodes.json',__FILE__)))
+node_data = JSON.parse(File.read(File.expand_path('../data/interfaces.json',__FILE__)))
 
 # Select the data that's specific to this node
-target_data = node_data[target]
+target_data = node_data['config'][target]
 
 # ospf unnumbered has same IP on a bunch of devices
-for intname in ['lo','swp1','swp2','swp3','swp4','swp17','swp18','swp19','swp20']
+for intname in node_data['interfaces'][topology] 
   describe interface(intname) do
     it { should have_ipv4_address("#{target_data['local_addr']}/32") }
   end
