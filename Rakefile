@@ -12,19 +12,32 @@ ENV['SUDO_PASSWORD'] = config['sudo_password'] unless ENV.has_key?('SUDO_PASSWOR
 
 # Gather the Rake tasks to define from the config
 tasks = config['tasks']
+topologies = config['topologies']
 
 # Define a top-level Rake task for each task defined, and set the correct
 # environment variables and test set to be run
 tasks.each do |t|
   desc "Run serverspec tests #{t['name']}"
   task t['name'].to_sym do
-    ENV['TOPOLOGY'] = t['topology']
+    # Extreme hackery to get some sensible command line arguments: take the
+    # last argument passed to Rake and treat it as an argment, and then subvert
+    # Rake by creating and empty task for it to run (Rake treats each argument
+    # as a target, so if we don't then it will complain that the target '2s'
+    # doesn't exist, for example)
+    topology = ARGV.last
+    abort "'#{topology}' is not a valid topology: try one of #{topologies.join(', ')}".colorize(:red) unless topologies.include? topology
+
+    # Create a no-op task for it to keep Rale happy
+    task topology.to_sym do ; end
+
+    # Set the topology for the upstream tests
+    ENV['TOPOLOGY'] = topology
 
     # Each set of tests is run once per. host, so keep track of how many hosts
     # failed
     failures = 0
 
-    t['targets'].each do |target|
+    t['targets'][topology].each do |target|
       begin
         ENV['TARGET_HOST'] = target
         Rake::Task['spec:run'].execute(name: t['name'], target: target, set: t['set'])
