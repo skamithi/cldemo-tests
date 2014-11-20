@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'json'
 
 node_data = JSON.parse(File.read(File.expand_path('../data/nodes.json',__FILE__)))
 
