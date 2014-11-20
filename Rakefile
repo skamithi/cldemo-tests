@@ -14,10 +14,25 @@ ENV['SUDO_PASSWORD'] = config['sudo_password'] unless ENV.has_key?('SUDO_PASSWOR
 tasks = config['tasks']
 topologies = config['topologies']
 
+# Provide some useful information if the user doesn't specify which tests to
+# run
+task :default do
+  puts 'Usage: rake <tests> <topology>'
+  puts
+  puts "Available tests are: #{tasks.map{|t| t['name']}.join(', ')}"
+  puts "Available topologies are: #{topologies.join(', ')}"
+  puts
+  puts 'For example, "rake ospfunnum 2s" will run the OSPF Unnumbered tests for a 2-switch topology'
+  abort
+end
+
+# Print usage information of the user hasn't passed valid arguments
+Rake::Task['default'].invoke if ARGV.length != 2
+
 # Define a top-level Rake task for each task defined, and set the correct
 # environment variables and test set to be run
 tasks.each do |t|
-  desc "Run serverspec tests #{t['name']}"
+  desc "Run the #{t['name']} serverspec tests"
   task t['name'].to_sym do
     # Extreme hackery to get some sensible command line arguments: take the
     # last argument passed to Rake and treat it as an argment, and then subvert
@@ -25,9 +40,14 @@ tasks.each do |t|
     # as a target, so if we don't then it will complain that the target '2s'
     # doesn't exist, for example)
     topology = ARGV.last
-    abort "'#{topology}' is not a valid topology: try one of #{topologies.join(', ')}".colorize(:red) unless topologies.include? topology
 
-    # Create a no-op task for it to keep Rale happy
+    # Print usage information of the user hasn't passed a valid topology
+    unless topologies.include? topology
+      puts "'#{topology}' is not a valid topology".colorize(:red)
+      Rake::Task['default'].invoke
+    end
+
+    # Create a no-op task for it to keep Rake happy
     task topology.to_sym do ; end
 
     # Set the topology for the upstream tests
