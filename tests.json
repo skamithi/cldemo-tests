@@ -10,7 +10,7 @@
     {
       "name": "ospfunnum2s",
       "topology": "2s",
-      "set": ["core", "2s", "ospfunnum"],
+      "set": ["core", "ospfunnum"],
       "targets": ["leaf1", "leaf2"]
     }
   ]
