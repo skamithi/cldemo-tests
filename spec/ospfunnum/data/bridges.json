@@ -1,0 +1,22 @@
+{
+  "bridges": [
+    {
+      "name": "br0",
+      "interfaces": [
+        "swp30",
+        "swp31",
+        "swp32",
+        "swp33"
+      ]
+    },
+    {
+      "name": "br1",
+      "interfaces": [
+        "swp34",
+        "swp35",
+        "swp36",
+        "swp37"
+      ]
+    }
+  ]
+}
