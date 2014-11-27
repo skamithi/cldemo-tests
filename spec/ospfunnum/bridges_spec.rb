@@ -6,7 +6,7 @@ if leaf?
   node_data = JSON.parse(File.read(File.expand_path('../data/bridges.json',__FILE__)))
 
   # Each bridge a) should exist b) should have each specified interface
-  # The bridge configuration is the same on both leafs 
+  # The bridge configuration is the same on both leafs
   node_data['bridges'].each do |br|
     describe bridge(br['name']) do
       it { should exist }
@@ -14,7 +14,7 @@ if leaf?
 
     br['interfaces'].each do |intf|
       describe bridge(br['name']) do
-        it { should have_interface(intf) } 
+        it { should have_interface(intf) }
       end
     end
   end
