@@ -11,7 +11,7 @@ neighbors = target_data[topology]['neighbors']
 
 # neighbors
 describe command("cl-bgp summary") do
-  for neighbor in neighbors do
+  neighbors.each do |neighbor|
     its(:stdout) { should match /#{neighbor} / }
   end
 end
