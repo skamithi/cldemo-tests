@@ -13,6 +13,10 @@ target_data['interfaces'][topology].each do |intf|
   end
 end
 
+describe interface('lo') do
+  it { should have_ipv4_address(target_data['local_addr']) }
+end
+
 if leaf?
   describe interface('br0') do
     it { should have_ipv4_address("#{target_data['br0_addr']}/25") }
