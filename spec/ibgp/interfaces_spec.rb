@@ -7,7 +7,7 @@ node_data = JSON.parse(File.read(File.expand_path('../data/interfaces.json',__FI
 target_data = node_data['config'][target]
 
 # ospf unnumbered has same IP on a bunch of devices
-for intf in target_data['interfaces'][topology]
+target_data['interfaces'][topology].each do |intf|
   describe interface(intf['name']) do
     it { should have_ipv4_address("#{intf['address']}/30") }
   end
