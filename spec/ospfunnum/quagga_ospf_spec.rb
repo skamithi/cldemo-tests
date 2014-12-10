@@ -16,7 +16,7 @@ interfaces = target_data[topology]['interfaces']
 neighbors = target_data[topology]['neighbors']
 
 # interfaces are unnumbered and have a neighbor
-for interface in interfaces do
+interfaces.each do |interface|
   describe command("cl-ospf interface show #{interface}") do
      its(:stdout) { should match /This interface is UNNUMBERED/ }
      its(:stdout) { should match /Adjacent neighbor count is 1/ }
@@ -25,7 +25,7 @@ end
 
 # neighbors
 describe command("cl-ospf neighbor show") do
-  for neighbor in neighbors do
+  neighbors.each do |neighbor|
     its(:stdout) { should match /#{neighbor} / }
   end
 end
