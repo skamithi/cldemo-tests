@@ -152,6 +152,7 @@
             "address": "10.1.1.60"
           }
         ]
+      }
     },
     "spine2": {
       "interfaces": {
