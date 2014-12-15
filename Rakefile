@@ -67,7 +67,7 @@ tasks.each do |t|
       end
     end
     if failures > 0
-      puts "#{failures} of #{t['targets'].length} hosts failed".colorize(:red)
+      puts "#{failures} of #{t['targets'][topology].length} hosts failed".colorize(:red)
     else
       puts "All tests passed succesfully".colorize(:green)
     end
