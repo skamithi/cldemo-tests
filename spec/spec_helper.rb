@@ -14,6 +14,9 @@ else
   set :sudo_password, ENV['SUDO_PASSWORD']
 end
 
+options = Net::SSH::Config.for(host)
+options[:user] ||= Etc.getlogin
+
 if ENV['ASK_LOGIN_PASSWORD']
   options[:password] = ask("\nEnter login password: ") { |q| q.echo = false }
 else
@@ -21,10 +24,6 @@ else
 end
 
 host = ENV['TARGET_HOST']
-
-options = Net::SSH::Config.for(host)
-
-options[:user] ||= Etc.getlogin
 
 set :host,        options[:host_name] || host
 set :ssh_options, options
