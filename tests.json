@@ -1,21 +1,31 @@
 {
-  "sudo_password": "CumulusLinux!",
-  "topologies": ["2s", "2s2l"],
+  "password": "CumulusLinux!",
+  "topologies": ["2s", "2s2l", "2lt22s"],
   "tasks": [
     {
       "name": "core",
-      "set": ["core"],
+      "sets": [
+        { "target": "default", "set": ["core"] },
+        { "target": "server1", "set": ["server"] },
+        { "target": "server2", "set": ["server"] }
+      ],
       "targets": {
         "2s": ["leaf1", "leaf2"],
-        "2s2l": ["leaf1", "leaf2", "spine1", "spine2"]
+        "2s2l": ["leaf1", "leaf2", "spine1", "spine2"],
+        "2lt22s": ["leaf1", "leaf2", "spine1", "spine2", "server1", "server2"]
       }
     },
     {
       "name": "ospfunnum",
-      "set": ["core", "ospfunnum"],
+      "sets": [
+        { "target": "default", "set": ["core", "ospfunnum"] },
+        { "target": "server1", "set": ["server"] },
+        { "target": "server2", "set": ["server"] }
+      ],
       "targets": {
         "2s": ["leaf1", "leaf2"],
-        "2s2l": ["leaf1", "leaf2", "spine1", "spine2"]
+        "2s2l": ["leaf1", "leaf2", "spine1", "spine2"],
+        "2lt22s": ["leaf1", "leaf2", "spine1", "spine2", "server1", "server2"]
       }
     }
   ]

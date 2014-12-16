@@ -14,11 +14,16 @@ else
   set :sudo_password, ENV['SUDO_PASSWORD']
 end
 
-host = ENV['TARGET_HOST']
-
 options = Net::SSH::Config.for(host)
-
 options[:user] ||= Etc.getlogin
+
+if ENV['ASK_LOGIN_PASSWORD']
+  options[:password] = ask("\nEnter login password: ") { |q| q.echo = false }
+else
+  options[:password] = ENV['LOGIN_PASSWORD']
+end
+
+host = ENV['TARGET_HOST']
 
 set :host,        options[:host_name] || host
 set :ssh_options, options
@@ -57,6 +62,10 @@ end
 
 def leaf?
   @tc.target.start_with? 'leaf'
+end
+
+def server?
+  @tc.target.start_with? 'server'
 end
 
 puts "Target is #{target} and topology is #{topology}"

@@ -1,6 +1,7 @@
 {
   "members": {
     "2s": ["leaf1","leaf2","wbench"],
-    "2s2l": ["leaf1","leaf2","spine1","spine2","wbench"]
+    "2s2l": ["leaf1","leaf2","spine1","spine2","wbench"],
+    "2lt22s": ["leaf1","leaf2","spine1","spine2","server1","server2","wbench"]
   }
 } 

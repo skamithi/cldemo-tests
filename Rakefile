@@ -7,8 +7,10 @@ require 'rspec/core/rake_task'
 config = JSON.parse(File.read('tests.json'))
 puts config.to_s.colorize(:magenta) if ENV['DEBUG']
 
-# Set the sudo password from the config unless the user has over-riddent it
-ENV['SUDO_PASSWORD'] = config['sudo_password'] unless ENV.has_key?('SUDO_PASSWORD')
+# Set the SSH & sudo password from the config unless the user has over-ridden
+# them
+ENV['SUDO_PASSWORD'] = config['password'] unless ENV.has_key?('SUDO_PASSWORD')
+ENV['LOGIN_PASSWORD'] = config['password'] unless ENV.has_key?('LOGIN_PASSWORD')
 
 # Gather the Rake tasks to define from the config
 tasks = config['tasks']
@@ -28,6 +30,17 @@ end
 
 # Print usage information of the user hasn't passed valid arguments
 Rake::Task['default'].invoke if ARGV.length != 2
+
+# Helper method for finding the correct set of tests to run for any given
+# target; returns the default set if there are no specific tests for a target
+def find_set(task, target)
+  default_set, target_set = ''
+  task['sets'].each do |task_set|
+    default_set = task_set['set'] if task_set['target'] == 'default'
+    target_set = task_set['set'] if task_set['target'] == target
+  end
+  target_set ||= default_set
+end
 
 # Define a top-level Rake task for each task defined, and set the correct
 # environment variables and test set to be run
@@ -60,7 +73,8 @@ tasks.each do |t|
     t['targets'][topology].each do |target|
       begin
         ENV['TARGET_HOST'] = target
-        Rake::Task['spec:run'].execute(name: t['name'], target: target, set: t['set'])
+        target_set = find_set(t, target)
+        Rake::Task['spec:run'].execute(name: t['name'], target: target, set: target_set)
       rescue Exception => e
         puts "Serverspec tests for #{target} failed: #{e.class} #{e.message}".colorize(:red)
         failures += 1
