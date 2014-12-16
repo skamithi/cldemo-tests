@@ -29,6 +29,17 @@ end
 # Print usage information of the user hasn't passed valid arguments
 Rake::Task['default'].invoke if ARGV.length != 2
 
+# Helper method for finding the correct set of tests to run for any given
+# target; returns the default set if there are no specific tests for a target
+def find_set(task, target)
+  default_set, target_set = ''
+  task['sets'].each do |task_set|
+    default_set = task_set['set'] if task_set['target'] == 'default'
+    target_set = task_set['set'] if task_set['target'] == target
+  end
+  target_set ||= default_set
+end
+
 # Define a top-level Rake task for each task defined, and set the correct
 # environment variables and test set to be run
 tasks.each do |t|
@@ -60,7 +71,8 @@ tasks.each do |t|
     t['targets'][topology].each do |target|
       begin
         ENV['TARGET_HOST'] = target
-        Rake::Task['spec:run'].execute(name: t['name'], target: target, set: t['set'])
+        target_set = find_set(t, target)
+        Rake::Task['spec:run'].execute(name: t['name'], target: target, set: target_set)
       rescue Exception => e
         puts "Serverspec tests for #{target} failed: #{e.class} #{e.message}".colorize(:red)
         failures += 1
