@@ -7,9 +7,10 @@ require 'rspec/core/rake_task'
 config = JSON.parse(File.read('tests.json'))
 puts config.to_s.colorize(:magenta) if ENV['DEBUG']
 
-# Set the sudo password from the config unless the user has over-riddent it
-ENV['SUDO_PASSWORD'] = config['sudo_password'] unless ENV.has_key?('SUDO_PASSWORD')
-ENV['LOGIN_PASSWORD'] = config['login_password'] unless ENV.has_key?('LOGIN_PASSWORD')
+# Set the SSH & sudo password from the config unless the user has over-ridden
+# them
+ENV['SUDO_PASSWORD'] = config['password'] unless ENV.has_key?('SUDO_PASSWORD')
+ENV['LOGIN_PASSWORD'] = config['password'] unless ENV.has_key?('LOGIN_PASSWORD')
 
 # Gather the Rake tasks to define from the config
 tasks = config['tasks']

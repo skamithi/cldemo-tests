@@ -1,6 +1,5 @@
 {
-  "login_password": "CumulusLinux!",
-  "sudo_password": "CumulusLinux!",
+  "password": "CumulusLinux!",
   "topologies": ["2s", "2s2l", "2lt22s"],
   "tasks": [
     {
