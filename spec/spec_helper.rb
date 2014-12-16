@@ -59,4 +59,8 @@ def leaf?
   @tc.target.start_with? 'leaf'
 end
 
+def server?
+  @tc.target.start_with? 'server'
+end
+
 puts "Target is #{target} and topology is #{topology}"
