@@ -14,6 +14,12 @@ else
   set :sudo_password, ENV['SUDO_PASSWORD']
 end
 
+if ENV['ASK_LOGIN_PASSWORD']
+  options[:password] = ask("\nEnter login password: ") { |q| q.echo = false }
+else
+  options[:password] = ENV['LOGIN_PASSWORD']
+end
+
 host = ENV['TARGET_HOST']
 
 options = Net::SSH::Config.for(host)
