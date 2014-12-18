@@ -1,0 +1,200 @@
+{
+  "config": {
+    "leaf1": {
+      "interfaces": {
+        "2s": [
+          {
+            "name": "swp1",
+            "address": "10.1.1.1"
+          },
+          {
+            "name": "swp2",
+            "address": "10.1.1.5"
+          },
+          {
+            "name": "swp3",
+            "address": "10.1.1.9"
+          },
+          {
+            "name": "swp4",
+            "address": "10.1.1.13"
+          }
+        ],
+        "2s2l": [
+          {
+            "name": "swp1",
+            "address": "10.1.1.1"
+          },
+          {
+            "name": "swp2",
+            "address": "10.1.1.5"
+          },
+          {
+            "name": "swp3",
+            "address": "10.1.1.9"
+          },
+          {
+            "name": "swp4",
+            "address": "10.1.1.13"
+          },
+          {
+            "name": "swp17",
+            "address": "10.1.1.33"
+          },
+          {
+            "name": "swp18",
+            "address": "10.1.1.37"
+          },
+          {
+            "name": "swp19",
+            "address": "10.1.1.41"
+          },
+          {
+            "name": "swp20",
+            "address": "10.1.1.45"
+          }
+        ]
+      },
+      "local_addr": "10.2.1.1",
+      "br0_addr": "10.4.1.1",
+      "br1_addr": "10.4.1.129"
+    },
+    "leaf2": {
+      "interfaces": {
+        "2s": [
+          {
+            "name": "swp1",
+            "address": "10.1.1.2"
+          },
+          {
+            "name": "swp2",
+            "address": "10.1.1.6"
+          },
+          {
+            "name": "swp3",
+            "address": "10.1.1.10"
+          },
+          {
+            "name": "swp4",
+            "address": "10.1.1.14"
+          }
+        ],
+        "2s2l": [
+          {
+            "name": "swp1",
+            "address": "10.1.1.17"
+          },
+          {
+            "name": "swp2",
+            "address": "10.1.1.21"
+          },
+          {
+            "name": "swp3",
+            "address": "10.1.1.25"
+          },
+          {
+            "name": "swp4",
+            "address": "10.1.1.29"
+          },
+          {
+            "name": "swp17",
+            "address": "10.1.1.49"
+          },
+          {
+            "name": "swp18",
+            "address": "10.1.1.53"
+          },
+          {
+            "name": "swp19",
+            "address": "10.1.1.57"
+          },
+          {
+            "name": "swp20",
+            "address": "10.1.1.61"
+          }
+        ]
+      },
+      "local_addr": "10.2.1.2",
+      "br0_addr": "10.4.2.1",
+      "br1_addr": "10.4.2.129"
+    },
+    "spine1": {
+      "interfaces": {
+        "2s2l": [
+          {
+            "name": "swp1",
+            "address": "10.1.1.2"
+          },
+          {
+            "name": "swp2",
+            "address": "10.1.1.6"
+          },
+          {
+            "name": "swp3",
+            "address": "10.1.1.10"
+          },
+          {
+            "name": "swp4",
+            "address": "10.1.1.14"
+          },
+          {
+            "name": "swp17",
+            "address": "10.1.1.50"
+          },
+          {
+            "name": "swp18",
+            "address": "10.1.1.54"
+          },
+          {
+            "name": "swp19",
+            "address": "10.1.1.58"
+          },
+          {
+            "name": "swp20",
+            "address": "10.1.1.62"
+          }
+        ]
+      },
+      "local_addr": "10.2.1.3"
+    },
+    "spine2": {
+      "interfaces": {
+        "2s2l": [
+          {
+            "name": "swp1",
+            "address": "10.1.1.18"
+          },
+          {
+            "name": "swp2",
+            "address": "10.1.1.22"
+          },
+          {
+            "name": "swp3",
+            "address": "10.1.1.26"
+          },
+          {
+            "name": "swp4",
+            "address": "10.1.1.30"
+          },
+          {
+            "name": "swp17",
+            "address": "10.1.1.34"
+          },
+          {
+            "name": "swp18",
+            "address": "10.1.1.38"
+          },
+          {
+            "name": "swp19",
+            "address": "10.1.1.42"
+          },
+          {
+            "name": "swp20",
+            "address": "10.1.1.46"
+          }
+        ]
+      },
+      "local_addr": "10.2.1.4"
+    }
+  }
+} 
