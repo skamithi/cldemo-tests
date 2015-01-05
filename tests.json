@@ -45,8 +45,8 @@
       "name": "bigdata",
       "sets": [
         { "target": "default", "set": ["core"] },
-        { "target": "server1", "set": ["server","server-bigdata-common","server-bigdata-master"] },
-        { "target": "server2", "set": ["server","server-bigdata-common"] }
+        { "target": "server1", "set": ["server","server/bigdata","server/bigdata/master"] },
+        { "target": "server2", "set": ["server","server/bigdata"] }
       ],
       "targets": {
         "2lt22s": ["leaf1", "leaf2", "spine1", "spine2", "server1", "server2"]
