@@ -10,3 +10,7 @@ for svcname in ["nova-compute"] do
     it { should be_running }
   end
 end
+
+describe port(8775) do
+  it { should be_listening.with('tcp') }
+end

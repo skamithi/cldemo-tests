@@ -19,3 +19,11 @@ for svcname in ["glance-api","glance-registry"] do
     it { should be_running }
   end
 end
+
+describe port(9191) do
+  it { should be_listening.with('tcp') }
+end
+
+describe port(9292) do
+  it { should be_listening.with('tcp') }
+end
