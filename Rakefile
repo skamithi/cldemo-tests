@@ -19,17 +19,32 @@ topologies = config['topologies']
 # Provide some useful information if the user doesn't specify which tests to
 # run
 task :default do
-  puts 'Usage: rake <tests> <topology>'
+  puts 'Usage: rake <tests> <topology> [<target>]'
   puts
   puts "Available tests are: #{tasks.map{|t| t['name']}.join(', ')}"
   puts "Available topologies are: #{topologies.join(', ')}"
   puts
   puts 'For example, "rake ospfunnum 2s" will run the OSPF Unnumbered tests for a 2-switch topology'
+  puts '"rake ospfunnum 2s leaf1" will run the OSPF Unnumbered tests for a 2-switch topology on "leaf1" only'
   abort
 end
 
 # Print usage information of the user hasn't passed valid arguments
-Rake::Task['default'].invoke if ARGV.length != 2
+Rake::Task['default'].invoke if ARGV.length < 2 or ARGV.length > 3
+
+# By default the tests are run on every host within the given topology, but an
+# optional third argument allows the user to specify a single host to run the
+# tests on; if one was passed, remember the host details and make sure ARGV is
+# consistent
+target_host = 'all'
+
+if ARGV.length == 3
+  target_host = ARGV.pop
+
+  # Create a no-op task for it to keep Rake happy
+  task target_host.to_sym do ; end
+end
+puts "Target host is #{target_host}".colorize(:magenta) if ENV['DEBUG']
 
 # Helper method for finding the correct set of tests to run for any given
 # target; returns the default set if there are no specific tests for a target
@@ -71,6 +86,9 @@ tasks.each do |t|
     failures = 0
 
     t['targets'][topology].each do |target|
+      # Skip the other targets if the user has specifed a single target
+      next unless target_host == 'all' || target_host == target
+
       begin
         ENV['TARGET_HOST'] = target
         target_set = find_set(t, target)
