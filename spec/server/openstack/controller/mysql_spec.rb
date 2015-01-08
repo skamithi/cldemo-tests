@@ -13,4 +13,5 @@ describe port(3306) do
 end
 
 describe file("/etc/mysql/my.conf") do
-
+  it { should be_file }
+end
