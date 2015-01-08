@@ -4,7 +4,7 @@ describe file('/etc/cumulus/.license.txt') do
   it { should be_file }
 end
 
-describe command('cl-license') do
+describe command('/usr/cumulus/bin/cl-license') do
   its(:stdout) { should match /email=/ }
   its(:stdout) { should match /account=/ }
   its(:stdout) { should match /expires=/ }
