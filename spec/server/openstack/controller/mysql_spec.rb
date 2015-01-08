@@ -11,3 +11,6 @@ end
 describe port(3306) do
   it { should be_listening.with('tcp') }
 end
+
+describe file("/etc/mysql/my.conf") do
+

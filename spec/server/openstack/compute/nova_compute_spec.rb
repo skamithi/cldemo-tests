@@ -4,7 +4,7 @@ describe file("/etc/nova/nova.conf") do
   it { should be_file }
 end
 
-for svcname in ["nova-compute"] do
+for svcname in ["nova-compute","nova-api-metadata"] do
   describe service(svcname) do
     it { should be_enabled }
     it { should be_running }

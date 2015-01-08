@@ -10,6 +10,12 @@ for filename in ["/etc/glance/glance-api-paste.ini","/etc/glance/glance-cache.co
   end
 end
 
+for pkg in ["glance","python-glanceclient"] so
+  describe package(pkg) do
+    it { should be_installed }
+  end
+end
+
 describe file("/var/lib/glance/glance.sqlite") do
   it { should_not be_file }
 end
