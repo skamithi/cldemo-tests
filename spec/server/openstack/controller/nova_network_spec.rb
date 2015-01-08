@@ -9,3 +9,10 @@ end
 describe command(cmdnova + " network-list") do
   its(:stdout) { should match /10.10.1.0/ }
 end
+
+for svcname in ["nova-network"] do
+  describe service(svcname) do
+    it { should be_enabled }
+    it { should be_running }
+  end
+end
