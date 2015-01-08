@@ -23,5 +23,5 @@ describe package("openstack-dashboard-ubuntu-theme") do
 end
 
 describe port(80) do
-  it { should be_listening.with('tcp') }
+  it { should be_listening.with('tcp6') }
 end
