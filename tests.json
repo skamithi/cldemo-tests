@@ -45,7 +45,7 @@
       "name": "openstack",
       "sets": [
         { "target": "default", "set": ["core"] },
-        { "target": "server1", "set": ["server","server/openstack","server/openstack/compute","server/openstack/controller"] },
+        { "target": "server1", "set": ["server","server/openstack","server/openstack/controller"] },
         { "target": "server2", "set": ["server","server/openstack","server/openstack/compute"] }
       ],
       "targets": {
