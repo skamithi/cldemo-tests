@@ -10,7 +10,7 @@ for filename in ["/etc/glance/glance-api-paste.ini","/etc/glance/glance-cache.co
   end
 end
 
-for pkg in ["glance","python-glanceclient"] so
+for pkg in ["glance","python-glanceclient"] do
   describe package(pkg) do
     it { should be_installed }
   end
