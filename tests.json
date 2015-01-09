@@ -55,12 +55,10 @@
     {
       "name": "vmware",
       "sets": [
-        { "target": "default", "set": ["core", "clag"] },
-        { "target": "server1", "set": ["server"] },
-        { "target": "server2", "set": ["server"] }
+        { "target": "default", "set": ["core", "clag"] }
       ],
       "targets": {
-        "2lt22s": ["leaf1", "leaf2", "spine1", "spine2", "server1", "server2"]
+        "2lt22s": ["leaf1", "leaf2", "spine1", "spine2"]
       }
     }
   ]
