@@ -28,8 +28,8 @@ $ bundle install
 There are different sets of tests for different demos, as well as a "core" set of tests which are common to every demo. The tests are written in such a way that they also understand and can test the different topologies that are used in the various workbenches. The tests are run using Rake, which is a Make like system for Ruby. To see what tests are available, run the following Rake command to print the list of available targets:
 
 ```
-$ rake -T
-Usage: rake <tests> <topology>
+$ rake
+Usage: rake <tests> <topology> [<target>]
 
 Available tests are: core, ospfunnum
 Available topologies are: 2s, 2s2l
@@ -47,6 +47,12 @@ Rake will then run the tests using Serverspec. Serverspec will connect to the re
 78 examples, 0 failures
 All tests passed succesfully
 ```
+
+By default tests will be run on all of the hosts defined for the given topology. If you wish, you can choose to run the tests for a single target. Simply specify the target; for example:
+
+`$ rake ospfunnum 2s leaf1`
+
+Will run the ospfunnum tests on "leaf1" only.
 
 ## Test Structure
 
@@ -151,6 +157,7 @@ As Serverspec is a Domain Specific Language (DSL) in Ruby, it is perfectly permi
 * topology - Returns the topology that the tests are being run for E.g. '2s'
 * spine? - Returns true if the tests are currently running on a spine switch.
 * leaf? - Returns true if the tests are currently running on a leaf switch.
+* server? - Returns true if the tests are currently running on a server.
 
 ### Adding a New Set
 
@@ -196,8 +203,8 @@ Instead if we want our tests to be entirely separate from an existing set of tes
 This would add a new target called 'example':
 
 ```
-$ rake -T
-Usage: rake <tests> <topology>
+$ rake
+Usage: rake <tests> <topology> [<target>]
 
 Available tests are: core, ospfunnum, example
 Available topologies are: 2s, 2s2l
