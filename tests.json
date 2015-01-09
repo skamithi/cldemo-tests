@@ -51,7 +51,15 @@
       "targets": {
         "2lt22s": ["leaf1", "leaf2", "spine1", "spine2", "server1", "server2"]
       }
+    },
+    {
+      "name": "vmware",
+      "sets": [
+        { "target": "default", "set": ["core", "clag"] }
+      ],
+      "targets": {
+        "2lt22s": ["leaf1", "leaf2", "spine1", "spine2"]
+      }
     }
-
   ]
 }
