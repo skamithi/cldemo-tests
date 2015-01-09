@@ -42,11 +42,11 @@
       }
     },
      {
-      "name": "bigdata",
+      "name": "hadoop",
       "sets": [
         { "target": "default", "set": ["core"] },
-        { "target": "server1", "set": ["server","server/bigdata","server/bigdata/master"] },
-        { "target": "server2", "set": ["server","server/bigdata"] }
+        { "target": "server1", "set": ["server","server/hadoop","server/hadoop/master"] },
+        { "target": "server2", "set": ["server","server/hadoop","server/hadoop/worker"] }
       ],
       "targets": {
         "2lt22s": ["leaf1", "leaf2", "spine1", "spine2", "server1", "server2"]

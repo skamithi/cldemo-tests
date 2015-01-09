@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-for servicename in ["mapred-historyserver","yarn-nodemanager","yarn-resourcemanager"] do
+for servicename in ["hadoop-datanode","yarn-nodemanager"] do
   describe service(servicename) do
     it { should be_running }
   end
