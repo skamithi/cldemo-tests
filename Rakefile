@@ -111,10 +111,10 @@ tasks.each do |t|
         Rake::Task['spec:run'].execute(name: t['name'], target: target, set: target_set)
       rescue Exception => e
         puts "Serverspec tests for #{target} failed: #{e.class} #{e.message}".colorize(:red)
-      else
-        report = JSON.load(File.read('report.json'))
-        summary[target] = report['summary']
       end
+
+      report = JSON.load(File.read('report.json'))
+      summary[target] = report['summary']
     end
     display_summary(summary)
   end
