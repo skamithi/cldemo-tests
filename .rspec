@@ -1,2 +1,4 @@
 --color
 --format documentation
+--format json
+--out report.json

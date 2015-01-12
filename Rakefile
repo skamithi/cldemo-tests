@@ -1,5 +1,6 @@
 require 'json'
 require 'colorize'
+require 'table_print'
 require 'rake'
 require 'rspec/core/rake_task'
 
@@ -57,6 +58,21 @@ def find_set(task, target)
   target_set ||= default_set
 end
 
+# Helper to pretty-print a test report summary after all of the tests have run
+# on all of the targets
+def display_summary(summary)
+  report_data = []
+  summary.each do |target, report|
+    total = report['example_count']
+    failed = report['failure_count']
+    passed = total - failed
+
+    report_data << {target: target, total: total, passed: passed, failed: failed}
+  end
+  puts "\nTest report summary\n".colorize(:green)
+  tp report_data
+end
+
 # Define a top-level Rake task for each task defined, and set the correct
 # environment variables and test set to be run
 tasks.each do |t|
@@ -81,9 +97,9 @@ tasks.each do |t|
     # Set the topology for the upstream tests
     ENV['TOPOLOGY'] = topology
 
-    # Each set of tests is run once per. host, so keep track of how many hosts
-    # failed
-    failures = 0
+    # Each set of tests is run once per. host, so keep track of the test report
+    # summary for each
+    summary = {}
 
     t['targets'][topology].each do |target|
       # Skip the other targets if the user has specifed a single target
@@ -95,14 +111,12 @@ tasks.each do |t|
         Rake::Task['spec:run'].execute(name: t['name'], target: target, set: target_set)
       rescue Exception => e
         puts "Serverspec tests for #{target} failed: #{e.class} #{e.message}".colorize(:red)
-        failures += 1
       end
+
+      report = JSON.load(File.read('report.json'))
+      summary[target] = report['summary']
     end
-    if failures > 0
-      puts "#{failures} of #{t['targets'][topology].length} hosts failed".colorize(:red)
-    else
-      puts "All tests passed succesfully".colorize(:green)
-    end
+    display_summary(summary)
   end
 end
 
