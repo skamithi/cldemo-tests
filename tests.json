@@ -41,15 +41,24 @@
         "2lt22s": ["leaf1", "leaf2", "spine1", "spine2", "server1", "server2"]
       }
     },
-     {
-      "name": "hadoop",
+    {
+      "name": "openstack",
       "sets": [
-        { "target": "default", "set": ["core"] },
-        { "target": "server1", "set": ["server","server/hadoop","server/hadoop/master"] },
-        { "target": "server2", "set": ["server","server/hadoop","server/hadoop/worker"] }
+        { "target": "default", "set": ["core", "clag"] },
+        { "target": "server1", "set": ["server","server/openstack","server/openstack/controller"] },
+        { "target": "server2", "set": ["server","server/openstack","server/openstack/compute"] }
       ],
       "targets": {
         "2lt22s": ["leaf1", "leaf2", "spine1", "spine2", "server1", "server2"]
+      }
+    },
+    {
+      "name": "vmware",
+      "sets": [
+        { "target": "default", "set": ["core", "clag"] }
+      ],
+      "targets": {
+        "2lt22s": ["leaf1", "leaf2", "spine1", "spine2"]
       }
     }
   ]
