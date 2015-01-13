@@ -1,0 +1,58 @@
+{
+  "config": {
+    "leaf1": {
+      "interfaces": [
+        "swp1s0",
+        "swp1s1",
+        "swp1s2",
+        "swp1s3",
+        "swp17",
+        "swp18",
+        "bridge",
+        "peerlink",
+        "peerlink.4094"
+      ]
+    },
+    "leaf2": {
+      "interfaces": [
+        "swp1s0",
+        "swp1s1",
+        "swp1s2",
+        "swp1s3",
+        "swp17",
+        "swp18",
+        "bridge",
+        "peerlink",
+        "peerlink.4094"
+      ]
+    },
+    "spine1": {
+      "interfaces": [
+        "swp17",
+        "swp18",
+        "swp49",
+        "swp50",
+        "swp51",
+        "swp52"
+        "bond-leaf1-2",
+        "bridge",
+        "peerlink",
+        "peerlink.4093"
+      ]
+    },
+    "spine2": {
+      "interfaces": [
+        "swp17",
+        "swp18",
+        "swp49",
+        "swp50",
+        "swp51",
+        "swp52"
+        "bond-leaf1-2",
+        "bridge",
+        "peerlink",
+        "peerlink.4093"
+      ]
+    }
+  }
+} 

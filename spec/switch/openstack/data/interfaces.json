@@ -1,0 +1,20 @@
+{
+  "config": {
+    "leaf1": {
+      "interfaces": [
+      ]
+    },
+    "leaf2": {
+      "interfaces": [
+      ]
+    },
+    "spine1": {
+      "interfaces": [
+      ]
+    },
+    "spine2": {
+      "interfaces": [
+      ]
+    }
+  }
+} 
