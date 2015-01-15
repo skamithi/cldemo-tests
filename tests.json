@@ -45,7 +45,7 @@
       "name": "openstack",
       "sets": [
         { "target": "default", "set": ["core", "clag"] },
-        { "target": "server1", "set": ["server","server/openstack","server/openstack/controller"] },
+        { "target": "server1", "set": ["server","server/openstack","server/openstack/controller","server/mysql"] },
         { "target": "server2", "set": ["server","server/openstack","server/openstack/compute"] }
       ],
       "targets": {
@@ -65,7 +65,7 @@
       "name": "librenms",
       "sets": [
         { "target": "default", "set": ["core", "quagga", "ospfunnum", "snmp"] },
-        { "target": "wbench", "set": ["wbench/librenms"] }
+        { "target": "wbench", "set": ["server/mysql", "server/librenms"] }
       ],
       "targets": {
         "2s": ["leaf1", "leaf2", "wbench"],
