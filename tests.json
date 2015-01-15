@@ -60,6 +60,17 @@
       "targets": {
         "2lt22s": ["leaf1", "leaf2", "spine1", "spine2"]
       }
+    },
+    {
+      "name": "librenms",
+      "sets": [
+        { "target": "default", "set": ["core", "quagga", "ospfunnum", "snmp"] },
+        { "target": "wbench", "set": ["wbench/librenms"] }
+      ],
+      "targets": {
+        "2s": ["leaf1", "leaf2", "wbench"],
+        "2lt22s": ["leaf1", "leaf2", "spine1", "spine2", "wbench"]
+      }
     }
   ]
 }
