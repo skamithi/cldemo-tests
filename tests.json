@@ -64,7 +64,7 @@
     {
       "name": "librenms",
       "sets": [
-        { "target": "default", "set": ["core", "quagga", "ospfunnum", "snmp"] },
+        { "target": "default", "set": ["core", "quagga", "snmp"] },
         { "target": "wbench", "set": ["server/mysql", "server/librenms"] }
       ],
       "targets": {
