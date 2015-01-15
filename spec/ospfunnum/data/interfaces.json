@@ -1,8 +1,7 @@
 {
   "interfaces": {
     "2s": ["lo","swp1","swp2","swp3","swp4"],
-    "2s2l": ["lo","swp1","swp2","swp3","swp4","swp17","swp18","swp19","swp20"],
-    "2lt22s": ["lo"]
+    "2s2l": ["lo","swp1","swp2","swp3","swp4","swp17","swp18","swp19","swp20"]
   },
   "config": {
     "leaf1": {
