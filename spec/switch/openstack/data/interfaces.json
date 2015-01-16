@@ -4,7 +4,7 @@
       "interfaces": [
         "bond-spine",
         "bond1",
-        "bond2,"
+        "bond2",
         "bridge",
         "peer"
       ]
@@ -13,7 +13,7 @@
       "interfaces": [
         "bond-spine",
         "bond1",
-        "bond2,"
+        "bond2",
         "bridge",
         "peer"
       ]
