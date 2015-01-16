@@ -82,6 +82,6 @@
         "2s": ["leaf1", "leaf2", "wbench"],
         "2lt22s": ["leaf1", "leaf2", "spine1", "spine2", "wbench"]
       }
-    },
+    }
   ]
 }
