@@ -1,12 +1,16 @@
 require 'spec_helper'
 
-for pkg in ["apache2","libapache2-mod-php5","rrdtool"]
+for pkg in ["apache2","libapache2-mod-php5","rrdtool","gmetad"]
   describe package(pkg) do
     it { should be_installed }
   end
 end
 
 describe service('apache2') do
+  it { should be_running }
+end
+
+describe service('gmetad') do
   it { should be_running }
 end
 
@@ -26,3 +30,6 @@ for dir in ["/var/lib/ganglia-web/dwoo/compiled","/var/lib/ganglia-web/dwoo/cach
   end
 end
 
+describe file('/etc/ganglia/gmetad.conf') do
+  it { shoould be_file }
+end
