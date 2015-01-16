@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-for pkg in ["apache2","libapache2-mod-php","php5-cli","php5-gd","php5-json","php5-mcrypt","php5-mysql","php5-snmp","php-net-ipv4","php-net-ipv6","php-pear","fping","git","graphviz","imagemagick","ipmitool","mtr-tiny","nmap","python-mysqldb","rrdtool","snmp-mibs-downloader","whois"]
+for pkg in ["apache2","libapache2-mod-php","php5-cli","php5-gd","php5-common","php5-mcrypt","php5-mysql","php5-snmp","php-net-ipv4","php-net-ipv6","php-pear","fping","git","graphviz","imagemagick","ipmitool","mtr-tiny","nmap","python-mysqldb","rrdtool","snmp-mibs-downloader","whois"]
   describe package(pkg) do
     it { should be_installed }
   end
@@ -11,7 +11,7 @@ describe service("apache2") do
 end
 
 describe port(80) do
-    it { should be_listening.with('tcp6') }
+    it { should be_listening.with('tcp') }
 end
 
 describe file('/var/www/librenms/config.php') do
