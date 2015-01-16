@@ -15,7 +15,7 @@ describe service('gmetad') do
 end
 
 describe port(80) do 
-  it { shoould be_listening.with('tcp6') }
+  it { should be_listening.with('tcp6') }
 end
 
 for nofile in ["/etc/apache2/sites-enabled/15-default.conf","/etc/apache2/sites-enabled/000-default"]
@@ -31,5 +31,5 @@ for dir in ["/var/lib/ganglia-web/dwoo/compiled","/var/lib/ganglia-web/dwoo/cach
 end
 
 describe file('/etc/ganglia/gmetad.conf') do
-  it { shoould be_file }
+  it { should be_file }
 end
