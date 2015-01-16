@@ -15,7 +15,7 @@ describe service('gmetad') do
 end
 
 describe port(80) do 
-  it { should be_listening.with('tcp6') }
+  it { should be_listening.with('tcp') }
 end
 
 for nofile in ["/etc/apache2/sites-enabled/15-default.conf","/etc/apache2/sites-enabled/000-default"]
