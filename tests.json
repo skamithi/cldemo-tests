@@ -75,7 +75,7 @@
     {
       "name": "ganglia",
       "sets": [
-        { "target": "default", "set": ["core", "quagga", "ganglia", "ospfunnum"] },
+        { "target": "default", "set": ["core", "quagga", "ganglia" ] },
         { "target": "wbench", "set": ["server/ganglia"] }
       ],
       "targets": {
