@@ -71,6 +71,17 @@
         "2s": ["leaf1", "leaf2", "wbench"],
         "2lt22s": ["leaf1", "leaf2", "spine1", "spine2", "wbench"]
       }
+    },
+    {
+      "name": "ganglia",
+      "sets": [
+        { "target": "default", "set": ["core", "quagga", "ganglia" ] },
+        { "target": "wbench", "set": ["server/ganglia"] }
+      ],
+      "targets": {
+        "2s": ["leaf1", "leaf2", "wbench"],
+        "2lt22s": ["leaf1", "leaf2", "spine1", "spine2", "wbench"]
+      }
     }
   ]
 }
