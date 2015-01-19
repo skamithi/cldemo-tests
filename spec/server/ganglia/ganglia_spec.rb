@@ -1,7 +1,8 @@
 require 'spec_helper'
 
-for pkg in ["apache2","libapache2-mod-php5","rrdtool","gmetad"]
-  describe package(pkg) do
+pkg = ["apache2","libapache2-mod-php5","rrdtool","gmetad"]
+pkg.each do |packages|
+  describe package(packages) do
     it { should be_installed }
   end
 end
@@ -18,14 +19,16 @@ describe port(80) do
   it { should be_listening.with('tcp') }
 end
 
-for nofile in ["/etc/apache2/sites-enabled/15-default.conf","/etc/apache2/sites-enabled/000-default"]
-  describe file(nofile) do
+nofile = ["/etc/apache2/sites-enabled/15-default.conf","/etc/apache2/sites-enabled/000-default"]
+nofile.each do |notfile|
+  describe file(notfile) do
     it { should_not be_file }
   end
 end
 
-for dir in ["/var/lib/ganglia-web/dwoo/compiled","/var/lib/ganglia-web/dwoo/cache"]
-  describe file(dir) do
+dir = ["/var/lib/ganglia-web/dwoo/compiled","/var/lib/ganglia-web/dwoo/cache"]
+dir.each do |directory|
+  describe file(directory) do
     it { should be_directory }
   end
 end
