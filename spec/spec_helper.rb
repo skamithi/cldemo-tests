@@ -68,4 +68,8 @@ def server?
   @tc.target.start_with? 'server'
 end
 
+def wbench?
+  @tc.target.start_with? 'wbench'
+end
+
 puts "Target is #{target} and topology is #{topology}"

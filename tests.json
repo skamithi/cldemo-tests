@@ -60,6 +60,17 @@
       "targets": {
         "2lt22s": ["leaf1", "leaf2", "spine1", "spine2"]
       }
+    },
+    {
+      "name": "librenms",
+      "sets": [
+        { "target": "default", "set": ["core", "quagga", "snmp"] },
+        { "target": "wbench", "set": ["server/mysql", "server/librenms"] }
+      ],
+      "targets": {
+        "2s": ["leaf1", "leaf2", "wbench"],
+        "2lt22s": ["leaf1", "leaf2", "spine1", "spine2", "wbench"]
+      }
     }
   ]
 }
