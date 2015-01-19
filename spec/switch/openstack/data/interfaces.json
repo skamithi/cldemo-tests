@@ -1,0 +1,36 @@
+{
+  "config": {
+    "leaf1": {
+      "interfaces": [
+        "bond-spine",
+        "bond1",
+        "bond2",
+        "bridge",
+        "peer"
+      ]
+    },
+    "leaf2": {
+      "interfaces": [
+        "bond-spine",
+        "bond1",
+        "bond2",
+        "bridge",
+        "peer"
+      ]
+    },
+    "spine1": {
+      "interfaces": [
+        "bond-leaf1-2",
+        "bridge",
+        "peer"
+      ]
+    },
+    "spine2": {
+      "interfaces": [
+        "bond-leaf1-2",
+        "bridge",
+        "peer"
+      ]
+    }
+  }
+}

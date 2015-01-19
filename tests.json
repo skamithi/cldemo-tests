@@ -44,8 +44,8 @@
     {
       "name": "openstack",
       "sets": [
-        { "target": "default", "set": ["core", "clag"] },
-        { "target": "server1", "set": ["server","server/openstack","server/openstack/controller","server/mysql"] },
+        { "target": "default", "set": ["core", "clag", "switch/openstack"] },
+        { "target": "server1", "set": ["server","server/openstack","server/openstack/controller"] },
         { "target": "server2", "set": ["server","server/openstack","server/openstack/compute"] }
       ],
       "targets": {
@@ -55,7 +55,7 @@
     {
       "name": "vmware",
       "sets": [
-        { "target": "default", "set": ["core", "clag"] }
+        { "target": "default", "set": ["core", "clag", "switch/vmware"] }
       ],
       "targets": {
         "2lt22s": ["leaf1", "leaf2", "spine1", "spine2"]
