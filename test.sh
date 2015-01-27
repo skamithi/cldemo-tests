@@ -24,16 +24,24 @@ for GEM in ruby-lint; do
   fi
 done
 
-# Lint the Serverspec files
+# Lint the Serverspec file
 printf "***\nChecking Serverspec...\n***\n"
-ruby-lint --presenter=syntastic spec/
-if [ $? -ne 0 ]; then
+for SPEC in $(find spec -name *_spec.rb)
+do
+  echo "Checking $SPEC"
+  # Settings come from ruby-lint.yml
+  ruby-lint $SPEC
+  if [ $? -ne 0 ]; then
+    RET_SUCCESS=1
+  fi
+done
+
+if [ $RET_SUCCESS -ne 0 ]; then
   printf "***\nSERVERSPEC CHECKS FAILED\n***\n"
-  RET_SUCCESS=1
 fi
 
 # If the caller is ignoring failures, make sure we always return successfully
-if [ $IGNORE_FAILURES -eq 1 ]; then
+if [[ $IGNORE_FAILURES -eq 1 && $RET_SUCCESS -ne 0 ]]; then
   printf "***\nIgnoring failures\n***\n"
   RET_SUCCESS=0
 fi
