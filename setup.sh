@@ -19,4 +19,4 @@ apt-get update -y
 apt-get install -y ruby2.1 rubygems
 apt-get autoremove -y
 gem install bundler
-bundle install
+bundle install --without test
