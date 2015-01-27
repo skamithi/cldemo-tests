@@ -24,7 +24,7 @@ for GEM in ruby-lint; do
   fi
 done
 
-# Lint the Serverspec file
+# Lint the Serverspec files
 printf "***\nChecking Serverspec...\n***\n"
 for SPEC in $(find spec -name *_spec.rb)
 do
