@@ -1,22 +1,74 @@
 {
-  "bridges": [
-    {
-      "name": "br0",
-      "interfaces": [
-        "swp30",
-        "swp31",
-        "swp32",
-        "swp33"
+  "leaf1": {
+    "2s": {
+      "bridges": [
+        {
+          "name": "br0",
+          "interfaces": [
+            "swp30",
+            "swp31",
+            "swp32",
+            "swp33"
+          ]
+        },
+        {
+          "name": "br1",
+          "interfaces": [
+            "swp34",
+            "swp35",
+            "swp36",
+            "swp37"
+          ]
+        }
       ]
     },
-    {
-      "name": "br1",
-      "interfaces": [
-        "swp34",
-        "swp35",
-        "swp36",
-        "swp37"
+    "2lt22s": {
+      "bridges": [
+        {
+          "name": "br0",
+          "interfaces": ["swp32s0"]
+        },
+        {
+          "name": "br1",
+          "interfaces": ["swp32s1"]
+        }
       ]
     }
-  ]
+  },
+  "leaf2": {
+    "2s": {
+      "bridges": [
+        {
+          "name": "br0",
+          "interfaces": [
+            "swp30",
+            "swp31",
+            "swp32",
+            "swp33"
+          ]
+        },
+        {
+          "name": "br1",
+          "interfaces": [
+            "swp34",
+            "swp35",
+            "swp36",
+            "swp37"
+          ]
+        }
+      ]
+    },
+    "2lt22s": {
+      "bridges": [
+        {
+          "name": "br0",
+          "interfaces": ["swp32s0"]
+        },
+        {
+          "name": "br1",
+          "interfaces": ["swp32s1"]
+        }
+      ]
+    }
+  }
 }
