@@ -17,7 +17,7 @@ while getopts ":i" OPT; do
 done
 
 # Check and install dependencies
-for GEM in ruby-lint; do
+for GEM in rubocop; do
   gem list | grep $GEM 2>&1 >/dev/null 
   if [ $? -ne 0 ]; then
     gem install $GEM
