@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe package("nova-novncproxy") do
+describe package('nova-novncproxy') do
   it { should be_installed }
 end
 

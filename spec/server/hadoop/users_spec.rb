@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-for username in ["zookeeper","hdfs","yarn","mapred","client"] do
+for username in %w(zookeeper hdfs yarn mapred client) do
   describe user(username) do
     it { should exist }
   end

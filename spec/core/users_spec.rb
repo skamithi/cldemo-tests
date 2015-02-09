@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-["cumulus","rocket","turtle"].each do |username|
+%w(cumulus rocket turtle).each do |username|
   describe user(username) do
     it { should exist }
-    it { should belong_to_group "sudo" }
+    it { should belong_to_group 'sudo' }
   end
 end

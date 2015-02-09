@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe service('switchd') do
-#  it { should be_enabled }
+  #  it { should be_enabled }
   it { should be_running }
 end
 
@@ -35,5 +35,3 @@ end
 describe file('/var/lib/cumulus/porttab') do
   it { should be_file }
 end
-
-
