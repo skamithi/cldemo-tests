@@ -1,22 +1,22 @@
 require 'spec_helper'
 
-describe service("zebra") do
+describe service('zebra') do
   it { should be_running }
 end
 
-describe service("bgpd") do
+describe service('bgpd') do
   it { should be_running }
 end
 
-describe service("ospfd") do
+describe service('ospfd') do
   it { should be_running }
 end
 
-describe service("watchquagga") do
+describe service('watchquagga') do
   it { should be_running }
 end
 
-["Quagga.conf","bgpd.conf","daemons","debian.conf","ospf6d.conf","ospfd.conf","vtysh.conf","zebra.conf"].each do |cfgfile|
+['Quagga.conf', 'bgpd.conf', 'daemons', 'debian.conf', 'ospf6d.conf', 'ospfd.conf', 'vtysh.conf', 'zebra.conf'].each do |cfgfile|
   describe file("/etc/quagga/#{cfgfile}") do
     it { should be_file }
   end

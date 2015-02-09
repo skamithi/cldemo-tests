@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'json'
 
-node_data = JSON.parse(File.read(File.expand_path('../data/quagga.json',__FILE__)))
+node_data = JSON.parse(File.read(File.expand_path('../data/quagga.json', __FILE__)))
 
 # Select the data that's specific to this node
 target_data = node_data[target]
@@ -10,8 +10,8 @@ target_data = node_data[target]
 neighbors = target_data[topology]['neighbors']
 
 # neighbors
-describe command("cl-bgp summary") do
+describe command('cl-bgp summary') do
   neighbors.each do |neighbor|
-    its(:stdout) { should match /#{neighbor} / }
+    its(:stdout) { should match(/#{neighbor} /) }
   end
 end

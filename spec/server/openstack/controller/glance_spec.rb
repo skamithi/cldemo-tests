@@ -1,26 +1,26 @@
 require 'spec_helper'
 
-describe file("/etc/glance") do
+describe file('/etc/glance') do
   it { should be_directory }
 end
 
-for filename in ["/etc/glance/glance-api-paste.ini","/etc/glance/glance-cache.conf","/etc/glance/glance-api.conf","/etc/glance/glance-registry.conf"] do
+['/etc/glance/glance-api-paste.ini', '/etc/glance/glance-cache.conf', '/etc/glance/glance-api.conf', '/etc/glance/glance-registry.conf'].each do |filename|
   describe file(filename) do
     it { should be_file }
   end
 end
 
-for pkg in ["glance","python-glanceclient"] do
+['glance', 'python-glanceclient'].each do |pkg|
   describe package(pkg) do
     it { should be_installed }
   end
 end
 
-describe file("/var/lib/glance/glance.sqlite") do
+describe file('/var/lib/glance/glance.sqlite') do
   it { should_not be_file }
 end
 
-for svcname in ["glance-api","glance-registry"] do
+['glance-api', 'glance-registry'].each do |svcname|
   describe service(svcname) do
     it { should be_running }
   end

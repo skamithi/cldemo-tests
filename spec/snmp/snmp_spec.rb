@@ -13,6 +13,6 @@ describe service('snmpd') do
   it { should be_enabled }
 end
 
-describe file("/etc/snmp/snmpd.conf") do
+describe file('/etc/snmp/snmpd.conf') do
   it { should be_file }
 end

@@ -1,8 +1,7 @@
 require 'spec_helper'
 
-for servicename in ["hadoop-datanode","yarn-nodemanager"] do
+['hadoop-datanode', 'yarn-nodemanager'].each do |servicename|
   describe service(servicename) do
     it { should be_running }
   end
 end
-

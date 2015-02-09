@@ -5,5 +5,5 @@ gem 'colorize'
 gem 'table_print'
 
 group 'test' do
-  gem 'ruby-lint'
+  gem 'rubocop'
 end
