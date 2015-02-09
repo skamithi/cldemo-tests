@@ -9,14 +9,7 @@ The tests are stored together in a single GitHub repository. To use the tests, s
 
 `$ git clone https://github.com/CumulusNetworks/cldemo-tests`
 
-Currently these tests require a newer version of Ruby than the version which is installed by default in the Workbench VM. The cldemo tests include a script which will setup and install Ruby 2.1 from the BrightBox PPA:
-
-```
-$ cd cldemo-tests
-$ sudo ./setup.sh
-```
-
-Or, if you already have Ruby 2.x installed
+Then install the dependencies:
 
 ```
 $ cd cldemo-tests
