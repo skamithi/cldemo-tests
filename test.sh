@@ -26,7 +26,7 @@ done
 
 # Lint the Serverspec files
 printf "***\nChecking Serverspec...\n***\n"
-rubocop spec
+rubocop -d spec
 if [ $? -ne 0 ]; then
   RET_SUCCESS=1
 fi
