@@ -26,15 +26,10 @@ done
 
 # Lint the Serverspec files
 printf "***\nChecking Serverspec...\n***\n"
-for SPEC in $(find spec -name *_spec.rb)
-do
-  echo "Checking $SPEC"
-  # Settings come from ruby-lint.yml
-  ruby-lint $SPEC
-  if [ $? -ne 0 ]; then
-    RET_SUCCESS=1
-  fi
-done
+rubocop spec
+if [ $? -ne 0 ]; then
+  RET_SUCCESS=1
+fi
 
 if [ $RET_SUCCESS -ne 0 ]; then
   printf "***\nSERVERSPEC CHECKS FAILED\n***\n"
