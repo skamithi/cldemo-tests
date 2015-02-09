@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-for pkgname in ['nova-api', 'nova-cert', 'nova-conductor', 'nova-consoleauth', 'nova-novncproxy', 'nova-scheduler', 'python-novaclient', 'nova-compute-kvm', 'nova-network'] do
+['nova-api', 'nova-cert', 'nova-conductor', 'nova-consoleauth', 'nova-novncproxy', 'nova-scheduler', 'python-novaclient', 'nova-compute-kvm', 'nova-network'].each do |pkgname|
   describe package(pkgname) do
     it { should be_installed }
   end
 end
 
-for svcname in ['nova-api', 'nova-cert', 'nova-consoleauth', 'nova-scheduler', 'nova-conductor', 'nova-novncproxy', 'nova-compute', 'nova-network'] do
+['nova-api', 'nova-cert', 'nova-consoleauth', 'nova-scheduler', 'nova-conductor', 'nova-novncproxy', 'nova-compute', 'nova-network'].each do |svcname|
   describe service(svcname) do
     it { should be_running }
     it { should be_enabled }

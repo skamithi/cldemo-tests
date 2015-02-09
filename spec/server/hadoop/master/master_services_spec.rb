@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-for servicename in ['hadoop-namenode', 'yarn-resourcemanager', 'mapred-historyserver'] do
+['hadoop-namenode', 'yarn-resourcemanager', 'mapred-historyserver'].each do |servicename|
   describe service(servicename) do
     it { should be_running }
   end

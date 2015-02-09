@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-for pkg in ['apache2', 'memcached', 'libapache2-mod-wsgi', 'openstack-dashboard'] do
+['apache2', 'memcached', 'libapache2-mod-wsgi', 'openstack-dashboard'].each do |pkg|
   describe package(pkg) do
     it { should be_installed }
   end

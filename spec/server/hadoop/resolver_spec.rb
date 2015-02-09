@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-for hostname in ['server1-hadoop', 'server2-hadoop'] do
+['server1-hadoop', 'server2-hadoop'].each do |hostname|
   describe host(hostname) do
     it { should be_resolvable }
   end

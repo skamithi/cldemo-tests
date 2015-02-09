@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-for username in %w(zookeeper hdfs yarn mapred client) do
+%w(zookeeper hdfs yarn mapred client).each do |username|
   describe user(username) do
     it { should exist }
   end

@@ -10,7 +10,7 @@ describe command(cmdnova + ' network-list') do
   its(:stdout) { should match(/10.10.1.0/) }
 end
 
-for svcname in ['nova-network'] do
+['nova-network'].each do |svcname|
   describe service(svcname) do
     it { should be_enabled }
     it { should be_running }
