@@ -11,3 +11,8 @@ end
 describe interface('bond0') do
   it { should exist }
 end
+
+# check that bond0 is up
+describe file('/sys/class/net/bond0/carrier') do
+  its(:content) { should match '1' }
+end
