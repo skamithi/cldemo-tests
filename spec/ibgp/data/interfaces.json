@@ -20,7 +20,7 @@
             "address": "10.1.1.13"
           }
         ],
-        "2s2l": [
+        "2lt22s": [
           {
             "name": "swp1",
             "address": "10.1.1.1"
@@ -79,7 +79,7 @@
             "address": "10.1.1.14"
           }
         ],
-        "2s2l": [
+        "2lt22s": [
           {
             "name": "swp1",
             "address": "10.1.1.17"
@@ -120,78 +120,46 @@
     },
     "spine1": {
       "interfaces": {
-        "2s2l": [
+        "2lt22s": [
           {
-            "name": "swp1",
+            "name": "swp49",
             "address": "10.1.1.2"
           },
           {
-            "name": "swp2",
+            "name": "swp50",
             "address": "10.1.1.6"
           },
           {
-            "name": "swp3",
-            "address": "10.1.1.10"
-          },
-          {
-            "name": "swp4",
-            "address": "10.1.1.14"
-          },
-          {
-            "name": "swp17",
+            "name": "swp51",
             "address": "10.1.1.50"
           },
           {
-            "name": "swp18",
+            "name": "swp52",
             "address": "10.1.1.54"
           },
-          {
-            "name": "swp19",
-            "address": "10.1.1.58"
-          },
-          {
-            "name": "swp20",
-            "address": "10.1.1.62"
-          }
         ]
       },
       "local_addr": "10.2.1.3"
     },
     "spine2": {
       "interfaces": {
-        "2s2l": [
+        "2lt22s": [
           {
-            "name": "swp1",
+            "name": "swp49",
             "address": "10.1.1.18"
           },
           {
-            "name": "swp2",
+            "name": "swp50",
             "address": "10.1.1.22"
           },
           {
-            "name": "swp3",
-            "address": "10.1.1.26"
-          },
-          {
-            "name": "swp4",
-            "address": "10.1.1.30"
-          },
-          {
-            "name": "swp17",
+            "name": "swp51",
             "address": "10.1.1.34"
           },
           {
-            "name": "swp18",
+            "name": "swp52",
             "address": "10.1.1.38"
           },
-          {
-            "name": "swp19",
-            "address": "10.1.1.42"
-          },
-          {
-            "name": "swp20",
-            "address": "10.1.1.46"
-          }
         ]
       },
       "local_addr": "10.2.1.4"
