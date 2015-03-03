@@ -22,36 +22,20 @@
         ],
         "2lt22s": [
           {
-            "name": "swp1",
+            "name": "swp1s0",
             "address": "10.1.1.1"
           },
           {
-            "name": "swp2",
+            "name": "swp1s1",
             "address": "10.1.1.5"
           },
           {
-            "name": "swp3",
-            "address": "10.1.1.9"
-          },
-          {
-            "name": "swp4",
-            "address": "10.1.1.13"
-          },
-          {
-            "name": "swp17",
+            "name": "swp1s2",
             "address": "10.1.1.33"
           },
           {
-            "name": "swp18",
+            "name": "swp1s3",
             "address": "10.1.1.37"
-          },
-          {
-            "name": "swp19",
-            "address": "10.1.1.41"
-          },
-          {
-            "name": "swp20",
-            "address": "10.1.1.45"
           }
         ]
       },
@@ -81,36 +65,20 @@
         ],
         "2lt22s": [
           {
-            "name": "swp1",
+            "name": "swp1s0",
             "address": "10.1.1.17"
           },
           {
-            "name": "swp2",
+            "name": "swp1s1",
             "address": "10.1.1.21"
           },
           {
-            "name": "swp3",
-            "address": "10.1.1.25"
-          },
-          {
-            "name": "swp4",
-            "address": "10.1.1.29"
-          },
-          {
-            "name": "swp17",
+            "name": "swp1s2",
             "address": "10.1.1.49"
           },
           {
-            "name": "swp18",
+            "name": "swp1s3",
             "address": "10.1.1.53"
-          },
-          {
-            "name": "swp19",
-            "address": "10.1.1.57"
-          },
-          {
-            "name": "swp20",
-            "address": "10.1.1.61"
           }
         ]
       },
@@ -136,7 +104,7 @@
           {
             "name": "swp52",
             "address": "10.1.1.54"
-          },
+          }
         ]
       },
       "local_addr": "10.2.1.3"
@@ -159,7 +127,7 @@
           {
             "name": "swp52",
             "address": "10.1.1.38"
-          },
+          }
         ]
       },
       "local_addr": "10.2.1.4"
