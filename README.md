@@ -25,7 +25,7 @@ $ rake
 Usage: rake <tests> <topology> [<target>]
 
 Available tests are: core, ospfunnum
-Available topologies are: 2s, 2s2l
+Available topologies are: 2s, 2lt22s
 ```
 
 For example, `rake ospfunnum 2s` will run the OSPF Unnumbered tests for a 2-switch topology
@@ -56,14 +56,14 @@ The available tests (and topologies) are defined in the file `tests.json`
 ```
 {
   "sudo_password": "<redacted>",
-  "topologies": ["2s", "2s2l"],
+  "topologies": ["2s", "2lt22s"],
   "tasks": [
     {
       "name": "core",
       "set": ["core"],
       "targets": {
         "2s": ["leaf1", "leaf2"],
-        "2s2l": ["leaf1", "leaf2", "spine1", "spine2"]
+        "2lt22s": ["leaf1", "leaf2", "spine1", "spine2"]
       }
     },
     {
@@ -71,7 +71,7 @@ The available tests (and topologies) are defined in the file `tests.json`
       "set": ["core", "ospfunnum"],
       "targets": {
         "2s": ["leaf1", "leaf2"],
-        "2s2l": ["leaf1", "leaf2", "spine1", "spine2"]
+        "2lt22s": ["leaf1", "leaf2", "spine1", "spine2"]
       }
     }
   ]
@@ -117,7 +117,7 @@ end
 {
   "interfaces": {
     "2s": ["lo","swp1","swp2","swp3","swp4"],
-    "2s2l": ["lo","swp1","swp2","swp3","swp4","swp17","swp18","swp19","swp20"]
+    "2lt22s": ["lo","swp1","swp2","swp3","swp4","swp17","swp18","swp19","swp20"]
   },
   "config": {
     "leaf1": {
@@ -162,12 +162,12 @@ Create a new directory under the 'spec' directory and populate it with your test
   "set": ["core", "ospfunnum", "example"],
   "targets": {
     "2s": ["leaf1", "leaf2"],
-    "2s2l": ["leaf1", "leaf2", "spine1", "spine2"]
+    "2lt22s": ["leaf1", "leaf2", "spine1", "spine2"]
   }
 }
 ```
 
-When the user next runs rake ospfunnum 2s or rake ospfunnum 2s2l, our new tests under the 'example' directory will be run after the tests in the 'ospfunnum' directory.
+When the user next runs rake ospfunnum 2s or rake ospfunnum 2lt22s, our new tests under the 'example' directory will be run after the tests in the 'ospfunnum' directory.
 
 Instead if we want our tests to be entirely separate from an existing set of tests, we would add an entirely new block to the 'tasks' JSON array:
 
@@ -178,7 +178,7 @@ Instead if we want our tests to be entirely separate from an existing set of tes
     "set": ["core"],
     "targets": {
       "2s": ["leaf1", "leaf2"],
-      "2s2l": ["leaf1", "leaf2", "spine1", "spine2"]
+      "2lt22s": ["leaf1", "leaf2", "spine1", "spine2"]
     }
   },
   ...
@@ -187,7 +187,7 @@ Instead if we want our tests to be entirely separate from an existing set of tes
     "set": ["core", "example"],
     "targets": {
       "2s": ["leaf1", "leaf2"],
-      "2s2l": ["leaf1", "leaf2", "spine1", "spine2"]
+      "2lt22s": ["leaf1", "leaf2", "spine1", "spine2"]
     }
   }
 ]
@@ -200,12 +200,12 @@ $ rake
 Usage: rake <tests> <topology> [<target>]
 
 Available tests are: core, ospfunnum, example
-Available topologies are: 2s, 2s2l
+Available topologies are: 2s, 2lt22s
 ```
 
 For example, `rake ospfunnum 2s` will run the OSPF Unnumbered tests for a 2-switch topology
 
-When the user next runs `rake example 2s` or `rake example 2s2l`, our new tests under the 'example' directory will be run after the tests in the 'core' directory.
+When the user next runs `rake example 2s` or `rake example 2lt22s`, our new tests under the 'example' directory will be run after the tests in the 'core' directory.
 
 ---
 
