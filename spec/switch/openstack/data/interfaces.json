@@ -7,13 +7,13 @@
         "bond2",
         "bridge",
         "peer"
-      ]
+      ],
       "bonds": [
         "bond-spine",
         "bond1",
         "bond2",
         "peer"
-      ]
+      ],
       "bridges": [
         "bridge"
       ]
@@ -25,13 +25,13 @@
         "bond2",
         "bridge",
         "peer"
-      ]
+      ],
       "bonds": [
         "bond-spine",
         "bond1",
         "bond2",
         "peer"
-      ]
+      ],
       "bridges": [
         "bridge"
       ]
@@ -41,11 +41,11 @@
         "bond-leaf1-2",
         "bridge",
         "peer"
-      ]
+      ],
       "bonds": [
         "bond-leaf1-2",
         "peer"
-      ]
+      ],
       "bridges": [
         "bridge"
       ]
@@ -55,11 +55,11 @@
         "bond-leaf1-2",
         "bridge",
         "peer"
-      ]
+      ],
       "bonds": [
         "bond-leaf1-2",
         "peer"
-      ]
+      ],
       "bridges": [
         "bridge"
       ]

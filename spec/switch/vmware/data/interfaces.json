@@ -11,10 +11,10 @@
         "bridge",
         "peerlink",
         "peerlink.4094"
-      ]
+      ],
       "bonds": [
         "peerlink"
-      ]
+      ],
       "bridges": [
         "bridge"
       ]
@@ -30,10 +30,10 @@
         "bridge",
         "peerlink",
         "peerlink.4094"
-      ]
+      ],
       "bonds": [
         "peerlink"
-      ]
+      ],
       "bridges": [
         "bridge"
       ]
@@ -50,11 +50,11 @@
         "bridge",
         "peerlink",
         "peerlink.4093"
-      ]
+      ],
       "bonds": [
         "peerlink",
         "bond-leaf1-2"
-      ]
+      ],
       "bridges": [
         "bridge"
       ]
@@ -71,11 +71,11 @@
         "bridge",
         "peerlink",
         "peerlink.4093"
-      ]
+      ],
       "bonds": [
         "peerlink",
         "bond-leaf1-2"
-      ]
+      ],
       "bridges": [
         "bridge"
       ]
