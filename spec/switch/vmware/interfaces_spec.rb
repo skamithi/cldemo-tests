@@ -12,3 +12,17 @@ target_data['interfaces'].each do |intf|
     it { should exist }
   end
 end
+
+# Test bonds exist
+target_data['bonds'].each do |bnd|
+  describe bond(bnd) do
+    it { should exist }
+  end
+end
+
+# Test bridges exist
+target_data['bridges'].each do |brdge|
+  describe bridge(brdge) do
+    it { should exist }
+  end
+end
