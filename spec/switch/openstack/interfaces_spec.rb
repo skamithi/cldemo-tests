@@ -27,8 +27,8 @@ target_data['bonds'].each do |bnd|
 end
 
 # Test bridges exist
-target_data['bridges'].each do |brdge|
-  describe bridge(brdge['name']) do
+target_data['bridges'].each do |brdg|
+  describe bridge(brdg['name']) do
     it { should exist }
   end
 
