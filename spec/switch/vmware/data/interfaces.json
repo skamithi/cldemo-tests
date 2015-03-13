@@ -97,11 +97,31 @@
         "peerlink.4093"
       ],
       "bonds": [
-        "peerlink",
-        "bond-leaf1-2"
+        {
+          "name": "peerlink",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        },
+        {
+          "name":"bond-leaf1-2",
+          "interfaces": [
+            "swp49",
+            "swp50",
+            "swp51",
+            "swp52"
+          ]
+        }
       ],
       "bridges": [
-        "bridge"
+        {
+          "name":"bridge",
+          "interfaces": [
+            "peer",
+            "bond-leaf1-2"
+          ]
+        }
       ]
     },
     "spine2": {
@@ -118,11 +138,31 @@
         "peerlink.4093"
       ],
       "bonds": [
-        "peerlink",
-        "bond-leaf1-2"
+        {
+          "name": "peerlink",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        },
+        {
+          "name":"bond-leaf1-2",
+          "interfaces": [
+            "swp49",
+            "swp50",
+            "swp51",
+            "swp52"
+          ]
+        }
       ],
       "bridges": [
-        "bridge"
+        {
+          "name":"bridge",
+          "interfaces": [
+            "peer",
+            "bond-leaf1-2"
+          ]
+        }
       ]
     }
   }
