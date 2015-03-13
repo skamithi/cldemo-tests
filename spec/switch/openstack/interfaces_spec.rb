@@ -17,7 +17,7 @@ end
 
 # Test bonds exist
 bonds.each do |bnd|
-  describe bond(bnd) do
+  describe bond(bnd['name']) do
     it { should exist }
   end
 
