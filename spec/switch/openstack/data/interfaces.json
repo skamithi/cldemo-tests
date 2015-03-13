@@ -59,10 +59,34 @@
         "peer"
       ],
       "bonds": [
-        "bond-spine",
-        "bond1",
-        "bond2",
-        "peer"
+        {
+          "name": "bond-spine",
+          "interfaces": [
+            "swp1s0",
+            "swp1s1",
+            "swp1s2",
+            "swp1s3"
+          ]
+        },
+        {
+          "name": "bond1",
+          "interfaces": [
+            "swp32s0"
+          ]
+        },
+        {
+          "name":"bond2",
+          "interfaces": [
+            "swp32s1"
+          ]
+        },
+        {
+          "name":"peer",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        }
       ],
       "bridges": [
         {
