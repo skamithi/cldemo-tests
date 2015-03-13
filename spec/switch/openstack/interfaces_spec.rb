@@ -5,6 +5,8 @@ node_data = JSON.parse(File.read(File.expand_path('../data/interfaces.json', __F
 
 # Select the data that's specific to this node
 target_data = node_data['config'][target]
+bridges = target_data[topology]['bridges']
+bonds = target_data[topology]['bonds']
 
 # ospf unnumbered has same IP on a bunch of devices
 target_data['interfaces'].each do |intf|
@@ -14,7 +16,7 @@ target_data['interfaces'].each do |intf|
 end
 
 # Test bonds exist
-target_data['bonds'].each do |bnd|
+bonds.each do |bnd|
   describe bond(bnd) do
     it { should exist }
   end
@@ -27,7 +29,7 @@ target_data['bonds'].each do |bnd|
 end
 
 # Test bridges exist
-target_data['bridges'].each do |brdg|
+bridges.each do |brdg|
   describe bridge(brdg['name']) do
     it { should exist }
   end
