@@ -18,11 +18,23 @@ target_data['bonds'].each do |bnd|
   describe bond(bnd) do
     it { should exist }
   end
+
+  bnd['interfaces'].each do |intf|
+    describe bond(bnd['name']) do
+      it { should have_interface(intf) }
+    end
+  end
 end
 
 # Test bridges exist
 target_data['bridges'].each do |brdge|
-  describe bridge(brdge) do
+  describe bridge(brdge['name']) do
     it { should exist }
+  end
+
+  brdg['interfaces'].each do |intf|
+    describe bridge(brdg['name']) do
+      it { should have_interface(intf) }
+    end
   end
 end

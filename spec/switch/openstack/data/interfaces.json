@@ -15,7 +15,15 @@
         "peer"
       ],
       "bridges": [
-        "bridge"
+        {
+          "name": "bridge",
+          "interfaces": [
+            "bond-spine",
+            "bond1",
+            "bond2",
+            "peer"
+          ]
+        }
       ]
     },
     "leaf2": {
@@ -33,7 +41,15 @@
         "peer"
       ],
       "bridges": [
-        "bridge"
+        {
+          "name": "bridge",
+          "interfaces": [
+            "bond-spine",
+            "bond1",
+            "bond2",
+            "peer"
+          ]
+        }
       ]
     },
     "spine1": {
@@ -47,7 +63,13 @@
         "peer"
       ],
       "bridges": [
-        "bridge"
+        {
+        "name": "bridge",
+          "interfaces": [
+            "bond-leaf1-2",
+            "peer"
+          ]
+        }
       ]
     },
     "spine2": {
@@ -61,8 +83,13 @@
         "peer"
       ],
       "bridges": [
-        "bridge"
-      ]
+        {
+        "name": "bridge",
+          "interfaces": [
+            "bond-leaf1-2",
+            "peer"
+          ]
+      }
     }
   }
 }
