@@ -71,13 +71,13 @@
         {
           "name": "bond1",
           "interfaces": [
-            "swp32s0"
+            "swp32s1"
           ]
         },
         {
           "name":"bond2",
           "interfaces": [
-            "swp32s1"
+            "swp32s0"
           ]
         },
         {
