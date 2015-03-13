@@ -107,8 +107,22 @@
         "peer"
       ],
       "bonds": [
-        "bond-leaf1-2",
-        "peer"
+        {
+          "name": "bond-leaf1-2",
+          "interfaces": [
+            "swp49",
+            "swp50",
+            "swp51",
+            "swp52"
+          ]  
+        },
+        {
+          "name": "peer",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        }
       ],
       "bridges": [
         {
@@ -127,8 +141,22 @@
         "peer"
       ],
       "bonds": [
-        "bond-leaf1-2",
-        "peer"
+        {
+          "name": "bond-leaf1-2",
+          "interfaces": [
+            "swp49",
+            "swp50",
+            "swp51",
+            "swp52"
+          ]  
+        },
+        {
+          "name": "peer",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        }
       ],
       "bridges": [
         {
@@ -137,8 +165,8 @@
             "bond-leaf1-2",
             "peer"
           ]
-      }
-    ]
+        }
+      ]
+    }
   }
-}
 }
