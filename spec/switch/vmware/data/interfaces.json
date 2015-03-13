@@ -8,15 +8,38 @@
         "swp1s3",
         "swp17",
         "swp18",
+        "uplink",
         "bridge",
         "peerlink",
         "peerlink.4094"
       ],
       "bonds": [
-        "peerlink"
+        {
+          "name": "peerlink",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        },
+        {
+          "name": "uplink",
+          "interfaces": [
+            "swp1s0",
+            "swp1s1",
+            "swp1s2",
+            "swp1s3"
+          ]
+        }
       ],
       "bridges": [
-        "bridge"
+        {
+          "name":"bridge",
+          "interfaces": [
+            "peerlink",
+            "esx-server1",
+            "esx-server2"
+          ]
+        }
       ]
     },
     "leaf2": {
@@ -32,10 +55,32 @@
         "peerlink.4094"
       ],
       "bonds": [
-        "peerlink"
+        {
+          "name": "peerlink",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        },
+        {
+          "name": "uplink",
+          "interfaces": [
+            "swp1s0",
+            "swp1s1",
+            "swp1s2",
+            "swp1s3"
+          ]
+        }
       ],
       "bridges": [
-        "bridge"
+        {
+          "name":"bridge",
+          "interfaces": [
+            "peerlink",
+            "esx-server1",
+            "esx-server2"
+          ]
+        }
       ]
     },
     "spine1": {
