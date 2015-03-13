@@ -118,7 +118,7 @@
         {
           "name":"bridge",
           "interfaces": [
-            "peer",
+            "peerlink",
             "bond-leaf1-2"
           ]
         }
@@ -159,7 +159,7 @@
         {
           "name":"bridge",
           "interfaces": [
-            "peer",
+            "peerlink",
             "bond-leaf1-2"
           ]
         }
