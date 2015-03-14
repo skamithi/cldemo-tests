@@ -8,9 +8,38 @@
         "swp1s3",
         "swp17",
         "swp18",
+        "uplink",
         "bridge",
         "peerlink",
         "peerlink.4094"
+      ],
+      "bonds": [
+        {
+          "name": "peerlink",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        },
+        {
+          "name": "uplink",
+          "interfaces": [
+            "swp1s0",
+            "swp1s1",
+            "swp1s2",
+            "swp1s3"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+          "name":"bridge",
+          "interfaces": [
+            "peerlink",
+            "esx-server1",
+            "esx-server2"
+          ]
+        }
       ]
     },
     "leaf2": {
@@ -24,6 +53,34 @@
         "bridge",
         "peerlink",
         "peerlink.4094"
+      ],
+      "bonds": [
+        {
+          "name": "peerlink",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        },
+        {
+          "name": "uplink",
+          "interfaces": [
+            "swp1s0",
+            "swp1s1",
+            "swp1s2",
+            "swp1s3"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+          "name":"bridge",
+          "interfaces": [
+            "peerlink",
+            "esx-server1",
+            "esx-server2"
+          ]
+        }
       ]
     },
     "spine1": {
@@ -38,6 +95,33 @@
         "bridge",
         "peerlink",
         "peerlink.4093"
+      ],
+      "bonds": [
+        {
+          "name": "peerlink",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        },
+        {
+          "name":"bond-leaf1-2",
+          "interfaces": [
+            "swp49",
+            "swp50",
+            "swp51",
+            "swp52"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+          "name":"bridge",
+          "interfaces": [
+            "peerlink",
+            "bond-leaf1-2"
+          ]
+        }
       ]
     },
     "spine2": {
@@ -52,6 +136,33 @@
         "bridge",
         "peerlink",
         "peerlink.4093"
+      ],
+      "bonds": [
+        {
+          "name": "peerlink",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        },
+        {
+          "name":"bond-leaf1-2",
+          "interfaces": [
+            "swp49",
+            "swp50",
+            "swp51",
+            "swp52"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+          "name":"bridge",
+          "interfaces": [
+            "peerlink",
+            "bond-leaf1-2"
+          ]
+        }
       ]
     }
   }

@@ -7,6 +7,47 @@
         "bond2",
         "bridge",
         "peer"
+      ],
+      "bonds": [
+        {
+          "name": "bond-spine",
+          "interfaces": [
+            "swp1s0",
+            "swp1s1",
+            "swp1s2",
+            "swp1s3"
+          ]
+        },
+        {
+          "name": "bond1",
+          "interfaces": [
+            "swp32s0"
+          ]
+        },
+        {
+          "name":"bond2",
+          "interfaces": [
+            "swp32s1"
+          ]
+        },
+        {
+          "name":"peer",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+          "name": "bridge",
+          "interfaces": [
+            "bond-spine",
+            "bond1",
+            "bond2",
+            "peer"
+          ]
+        }
       ]
     },
     "leaf2": {
@@ -16,6 +57,47 @@
         "bond2",
         "bridge",
         "peer"
+      ],
+      "bonds": [
+        {
+          "name": "bond-spine",
+          "interfaces": [
+            "swp1s0",
+            "swp1s1",
+            "swp1s2",
+            "swp1s3"
+          ]
+        },
+        {
+          "name": "bond1",
+          "interfaces": [
+            "swp32s1"
+          ]
+        },
+        {
+          "name":"bond2",
+          "interfaces": [
+            "swp32s0"
+          ]
+        },
+        {
+          "name":"peer",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+          "name": "bridge",
+          "interfaces": [
+            "bond-spine",
+            "bond1",
+            "bond2",
+            "peer"
+          ]
+        }
       ]
     },
     "spine1": {
@@ -23,6 +105,33 @@
         "bond-leaf1-2",
         "bridge",
         "peer"
+      ],
+      "bonds": [
+        {
+          "name": "bond-leaf1-2",
+          "interfaces": [
+            "swp49",
+            "swp50",
+            "swp51",
+            "swp52"
+          ]  
+        },
+        {
+          "name": "peer",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+        "name": "bridge",
+          "interfaces": [
+            "bond-leaf1-2",
+            "peer"
+          ]
+        }
       ]
     },
     "spine2": {
@@ -30,6 +139,33 @@
         "bond-leaf1-2",
         "bridge",
         "peer"
+      ],
+      "bonds": [
+        {
+          "name": "bond-leaf1-2",
+          "interfaces": [
+            "swp49",
+            "swp50",
+            "swp51",
+            "swp52"
+          ]  
+        },
+        {
+          "name": "peer",
+          "interfaces": [
+            "swp17",
+            "swp18"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+        "name": "bridge",
+          "interfaces": [
+            "bond-leaf1-2",
+            "peer"
+          ]
+        }
       ]
     }
   }
