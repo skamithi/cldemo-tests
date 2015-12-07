@@ -14,7 +14,7 @@ end
 # Select the data that's specific to this node for the given topology
 interfaces = target_data[topology]['interfaces']
 neighbors = target_data[topology]['neighbors']
-
+ospf_routes = target_data[topology]['ospf_routes']
 # interfaces are unnumbered and have a neighbor
 interfaces.each do |interface|
   describe command("cl-ospf interface show #{interface}") do
@@ -27,5 +27,11 @@ end
 describe command('cl-ospf neighbor show') do
   neighbors.each do |neighbor|
     its(:stdout) { should match(/#{neighbor} /) }
+  end
+end
+
+describe 'Number of OSPF routes' do
+  describe command("cl-ospf route show | egrep '^\\w' | wc -l") do
+    its(:stdout) { should eq("#{ospf_routes}\n") }
   end
 end
