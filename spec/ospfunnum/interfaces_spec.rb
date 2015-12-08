@@ -13,6 +13,12 @@ target_data['interfaces'][topology].each do |intname|
   end
 end
 
+describe "LLDP Neighbor count" do
+  describe command("lldpctl -f keyvalue | grep -o port.ifname | wc -l") do
+    its(:stdout) { should eq "#{target_data['lldp_count']}\n" } 
+  end
+end
+
 if leaf?
   describe interface('br0') do
     it { should have_ipv4_address("#{target_data['br0_addr']}/25") }

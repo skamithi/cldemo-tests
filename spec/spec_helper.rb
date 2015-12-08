@@ -15,7 +15,8 @@ else
 end
 
 options = Net::SSH::Config.for(host)
-options[:user] ||= Etc.getlogin
+#options[:user] ||= Etc.getlogin
+options[:user] ||= 'root'
 
 if ENV['ASK_LOGIN_PASSWORD']
   options[:password] = ask("\nEnter login password: ") { |q| q.echo = false }
